@@ -9,6 +9,7 @@ public class ShipDrive : MonoBehaviour
     public float speed;
     public float turnSpeed;
     public float gravMult;
+    public float strafeVal;
     private Rigidbody rb;
 
     private FF1 ff1;
@@ -58,6 +59,10 @@ public class ShipDrive : MonoBehaviour
         Vector3 localVel = transform.InverseTransformDirection(rb.velocity);
         localVel.x = 0;
         rb.velocity = transform.TransformDirection(localVel);
+        //if(UnityEngine.Input.GetButtonDown("Fire1"))
+        //{
+        //    rb.AddRelativeForce(new Vector3(100, 0, -100));
+        //}
         //if(UnityEngine.Input.GetKey(KeyCode.R))
         //{
         //    rb.AddRelativeForce(new Vector3(1000, 0, 0));
@@ -71,13 +76,21 @@ public class ShipDrive : MonoBehaviour
     }
     void Turn()
     {
+
         if (/*UnityEngine.Input.GetKey(KeyCode.D)*/ moveInput.x > 0)
         {
             rb.AddTorque(Vector3.up * turnSpeed);
+            //yaw += turnSpeed * Time.deltaTime * (((UnityEngine.Input.GetAxis("Horizontal") < 0.25) && (UnityEngine.Input.GetAxis("Horizontal") > -0.25)) ? 0f : UnityEngine.Input.GetAxis("Horizontal"));//Turn if the joystick isn't in the deadzone
+            //transform.rotation = Quaternion.Euler(0, yaw, 0);
+            //speed += UnityEngine.Input.GetAxis("Horizontal");
+            //transform.rotation = Quaternion.Euler(0, turnSpeed * speed, 0);
         }
         if (/*UnityEngine.Input.GetKey(KeyCode.A)*/ moveInput.x < 0)
         {
             rb.AddTorque(-Vector3.up * turnSpeed);
+            //speed += UnityEngine.Input.GetAxis("Horizontal");
+            //transform.rotation = Quaternion.Euler(0, turnSpeed * speed, 0);
+
         }
     }
 
