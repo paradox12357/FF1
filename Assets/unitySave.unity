@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 113660279}
   - component: {fileID: 113660284}
   - component: {fileID: 113660283}
+  - component: {fileID: 113660285}
   m_Layer: 0
   m_Name: Speedship
   m_TagString: Untagged
@@ -409,6 +410,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &113660285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113660277}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84cf4415aa9b23043b120f161f89c156, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fwd_accel: 100
+  fwd_max_speed: 200
+  brake_speed: 200
+  turn_speed: 75
+  hover_height: 3
+  hover_range_high: 3.5
+  hover_range_low: 2.5
+  rising: 0
+  height_smooth: 10
+  pitch_smooth: 5
+  yaw: 0
 --- !u!1 &281053036
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,8 +568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57fa0a9699ffbda43852a5e2df37770c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothing: 0.3
-  rotSmoothing: 0.1
+  smoothing: 1
+  rotSmoothing: 0.75
   player: {fileID: 113660282}
 --- !u!4 &388864992
 Transform:

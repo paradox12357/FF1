@@ -61,9 +61,11 @@
   <ItemGroup>
     <Compile Include="Assets\FF1.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\FZeroMovement.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\UI.cs" />
     <Compile Include="Assets\Scripts\ShipDrive.cs" />
+    <Compile Include="Assets\Scripts\camFollowTwo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

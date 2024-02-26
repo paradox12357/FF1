@@ -53,6 +53,51 @@ public partial class @FF1: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StrafeRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""fdd959f7-23ab-4945-a64d-43e9471d21b9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StrafeLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""63008e37-1b1e-4101-9e4e-01850cb1945b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Accelerate"",
+                    ""type"": ""Button"",
+                    ""id"": ""1402b9e2-464a-4f32-9d32-f048b68faa7d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ItemUse"",
+                    ""type"": ""Button"",
+                    ""id"": ""957cf80a-a844-44c6-87a8-d5bd88f3ca92"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Decelerate"",
+                    ""type"": ""Button"",
+                    ""id"": ""dfeef206-fef3-415f-a0e0-effb2185ac3b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -328,6 +373,61 @@ public partial class @FF1: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""XR"",
                     ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""05819a1a-22f3-47e6-b0c3-110ac7fe1dd6"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StrafeRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b95f4c6d-53ab-4983-a894-343432f1b7b5"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StrafeLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b505ae45-6fde-4938-9b3e-33face02826d"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Accelerate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36ef27a8-3f7b-49fd-914c-96fb12ff7d43"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ItemUse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a7ec4868-dfb3-4ab7-a9ab-73fe1df40ea5"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Decelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -918,6 +1018,11 @@ public partial class @FF1: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_StrafeRight = m_Player.FindAction("StrafeRight", throwIfNotFound: true);
+        m_Player_StrafeLeft = m_Player.FindAction("StrafeLeft", throwIfNotFound: true);
+        m_Player_Accelerate = m_Player.FindAction("Accelerate", throwIfNotFound: true);
+        m_Player_ItemUse = m_Player.FindAction("ItemUse", throwIfNotFound: true);
+        m_Player_Decelerate = m_Player.FindAction("Decelerate", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -994,6 +1099,11 @@ public partial class @FF1: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_StrafeRight;
+    private readonly InputAction m_Player_StrafeLeft;
+    private readonly InputAction m_Player_Accelerate;
+    private readonly InputAction m_Player_ItemUse;
+    private readonly InputAction m_Player_Decelerate;
     public struct PlayerActions
     {
         private @FF1 m_Wrapper;
@@ -1001,6 +1111,11 @@ public partial class @FF1: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @StrafeRight => m_Wrapper.m_Player_StrafeRight;
+        public InputAction @StrafeLeft => m_Wrapper.m_Player_StrafeLeft;
+        public InputAction @Accelerate => m_Wrapper.m_Player_Accelerate;
+        public InputAction @ItemUse => m_Wrapper.m_Player_ItemUse;
+        public InputAction @Decelerate => m_Wrapper.m_Player_Decelerate;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1019,6 +1134,21 @@ public partial class @FF1: IInputActionCollection2, IDisposable
             @Fire.started += instance.OnFire;
             @Fire.performed += instance.OnFire;
             @Fire.canceled += instance.OnFire;
+            @StrafeRight.started += instance.OnStrafeRight;
+            @StrafeRight.performed += instance.OnStrafeRight;
+            @StrafeRight.canceled += instance.OnStrafeRight;
+            @StrafeLeft.started += instance.OnStrafeLeft;
+            @StrafeLeft.performed += instance.OnStrafeLeft;
+            @StrafeLeft.canceled += instance.OnStrafeLeft;
+            @Accelerate.started += instance.OnAccelerate;
+            @Accelerate.performed += instance.OnAccelerate;
+            @Accelerate.canceled += instance.OnAccelerate;
+            @ItemUse.started += instance.OnItemUse;
+            @ItemUse.performed += instance.OnItemUse;
+            @ItemUse.canceled += instance.OnItemUse;
+            @Decelerate.started += instance.OnDecelerate;
+            @Decelerate.performed += instance.OnDecelerate;
+            @Decelerate.canceled += instance.OnDecelerate;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1032,6 +1162,21 @@ public partial class @FF1: IInputActionCollection2, IDisposable
             @Fire.started -= instance.OnFire;
             @Fire.performed -= instance.OnFire;
             @Fire.canceled -= instance.OnFire;
+            @StrafeRight.started -= instance.OnStrafeRight;
+            @StrafeRight.performed -= instance.OnStrafeRight;
+            @StrafeRight.canceled -= instance.OnStrafeRight;
+            @StrafeLeft.started -= instance.OnStrafeLeft;
+            @StrafeLeft.performed -= instance.OnStrafeLeft;
+            @StrafeLeft.canceled -= instance.OnStrafeLeft;
+            @Accelerate.started -= instance.OnAccelerate;
+            @Accelerate.performed -= instance.OnAccelerate;
+            @Accelerate.canceled -= instance.OnAccelerate;
+            @ItemUse.started -= instance.OnItemUse;
+            @ItemUse.performed -= instance.OnItemUse;
+            @ItemUse.canceled -= instance.OnItemUse;
+            @Decelerate.started -= instance.OnDecelerate;
+            @Decelerate.performed -= instance.OnDecelerate;
+            @Decelerate.canceled -= instance.OnDecelerate;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1217,6 +1362,11 @@ public partial class @FF1: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnStrafeRight(InputAction.CallbackContext context);
+        void OnStrafeLeft(InputAction.CallbackContext context);
+        void OnAccelerate(InputAction.CallbackContext context);
+        void OnItemUse(InputAction.CallbackContext context);
+        void OnDecelerate(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
