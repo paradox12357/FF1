@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UI : MonoBehaviour
+public class SpeedUI : MonoBehaviour
 {
 
     public TextMeshProUGUI speedText;
