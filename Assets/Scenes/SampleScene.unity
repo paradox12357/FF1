@@ -1596,6 +1596,7 @@ MonoBehaviour:
   turnSpeed: 40
   gravMult: 100
   grounded: 0
+  forward: 0
   groundedCheckDistance: 0
 --- !u!114 &1548396311
 MonoBehaviour:
@@ -1703,6 +1704,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 957cf80a-a844-44c6-87a8-d5bd88f3ca92
     m_ActionName: Player/ItemUse[/DualShock4GamepadHID/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dfeef206-fef3-415f-a0e0-effb2185ac3b
+    m_ActionName: Player/Decelerate[/DualShock4GamepadHID/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1767,7 +1772,7 @@ MonoBehaviour:
   fwd_accel: 100
   fwd_max_speed: 100
   brake_speed: 200
-  turn_speed: 100
+  turn_speed: 30
   hover_height: 1
   height_smooth: 10
   pitch_smooth: 5
@@ -1784,9 +1789,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ee09b135362ac49940df6f6179207e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grounded: 0
-  groundedCheckDistance: 0
-  bufferCheckDistance: 0.1
 --- !u!1 &1561302403
 GameObject:
   m_ObjectHideFlags: 0

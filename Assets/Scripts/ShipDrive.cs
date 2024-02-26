@@ -12,6 +12,7 @@ public class ShipDrive : MonoBehaviour
     //public float strafeVal;
     public bool grounded = false;
     private Rigidbody rb;
+    public bool forward = false;
     public float groundedCheckDistance;
     //private float bufferCheckDistance = 0.1f;
 
@@ -46,23 +47,27 @@ public class ShipDrive : MonoBehaviour
         {
             grounded = false;//ray does not hit the ground
         }
+        //print("Torque: " + rb.GetAccumulatedTorque());
     }
     void Accelerate()
     {
         //moveInput = ff1.Player.Move.ReadValue<Vector2>();
         moveInput = inputActions["Move"].ReadValue<Vector2>();
-        print("Move Input: " + moveInput.x + " " + moveInput.y);
+        //print("Move Input: " + moveInput.x + " " + moveInput.y);
         if ((UnityEngine.Input.GetKey(KeyCode.W) || ff1.Player.Accelerate.IsPressed()) && grounded == true)
         {
             rb.AddRelativeForce(new Vector3(0, 0, 100));
+            forward = true;
             print("Velocity: " + rb.velocity.magnitude);
         }
-        else if ((UnityEngine.Input.GetKey(KeyCode.S)) && (grounded == true))
+        else if ((UnityEngine.Input.GetKey(KeyCode.W) || ff1.Player.Decelerate.IsPressed()) && (grounded == true))
         {
             rb.AddRelativeForce(new Vector3(0, 0, -100));
+            forward = false;
+            print("Velocity: -" + rb.velocity.magnitude);
         }
 
-        if(rb.velocity.magnitude > 0)//Gradually Slow the Speedship down
+        if(rb.velocity.magnitude > 0 && forward == true)//Gradually Slow the Speedship down (when it's going forwards)
         {
             if (rb.velocity.magnitude > 100)
             {
@@ -72,19 +77,31 @@ public class ShipDrive : MonoBehaviour
             {
                 rb.AddRelativeForce(new Vector3(0, 0, -0.5f * rb.velocity.magnitude));
             }
-            
+
         }
-        
+        if (rb.velocity.magnitude > 0 && forward == false)//Gradually Slow the Speedship down (when it's going backwards)
+        {
+            if (rb.velocity.magnitude > 100)
+            {
+                rb.AddRelativeForce(new Vector3(0, 0, 0.8f * rb.velocity.magnitude));
+            }
+            else
+            {
+                rb.AddRelativeForce(new Vector3(0, 0, 0.5f * rb.velocity.magnitude));
+            }
+
+        }
+
         Vector3 localVel = transform.InverseTransformDirection(rb.velocity);
         localVel.x = 0;
         rb.velocity = transform.TransformDirection(localVel);
 
-        if(UnityEngine.Input.GetKey(KeyCode.R) || ff1.Player.StrafeRight.IsPressed())//Strafing Right
+        if((UnityEngine.Input.GetKey(KeyCode.R) || ff1.Player.StrafeRight.IsPressed()) && (UnityEngine.Input.GetKey(KeyCode.W) || ff1.Player.Accelerate.IsPressed()))//Strafing Right
         {
             rb.AddRelativeForce(new Vector3(15 * rb.velocity.magnitude, 0, 0));
         }
 
-        if (UnityEngine.Input.GetKey(KeyCode.Q) || ff1.Player.StrafeLeft.IsPressed())//Strafing Left
+        if ((UnityEngine.Input.GetKey(KeyCode.Q) || ff1.Player.StrafeLeft.IsPressed()) && (UnityEngine.Input.GetKey(KeyCode.W) || ff1.Player.Accelerate.IsPressed()))//Strafing Left
         {
             rb.AddRelativeForce(new Vector3(-15 * rb.velocity.magnitude, 0, 0));
         }
