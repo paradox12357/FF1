@@ -60,7 +60,7 @@ public class ShipDrive : MonoBehaviour
             forward = true;
             print("Velocity: " + rb.velocity.magnitude);
         }
-        else if ((UnityEngine.Input.GetKey(KeyCode.W) || ff1.Player.Decelerate.IsPressed()) && (grounded == true))
+        else if ((UnityEngine.Input.GetKey(KeyCode.S) || ff1.Player.Decelerate.IsPressed()) && (grounded == true))
         {
             rb.AddRelativeForce(new Vector3(0, 0, -100));
             forward = false;
