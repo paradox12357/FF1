@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Assets\FF1.cs" />
     <Compile Include="Assets\Scripts\ScoreUI.cs" />
+    <Compile Include="Assets\Scripts\CheckpointCounter.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\SpeedUI.cs" />
     <Compile Include="Assets\Scripts\FZeroMovement.cs" />
