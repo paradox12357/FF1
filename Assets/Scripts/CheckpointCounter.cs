@@ -12,7 +12,7 @@ public class CheckpointCounter : MonoBehaviour
     void Start()
     {
         checkpointNames = new String[maxCheckpoints];
-        checkpointText.text = "CP: 0/" + maxCheckpoints;
+        checkpointText.text = "Gates: 0/" + maxCheckpoints;
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class CheckpointCounter : MonoBehaviour
             checkpointNames[checkpointCount] = other.gameObject.name;
             checkpointCount++;
             Debug.Log("Checkpoint Count: " + checkpointCount);
-            checkpointText.text = "CP: " + checkpointCount + "/" + maxCheckpoints;
+            checkpointText.text = "Gates: " + checkpointCount + "/" + maxCheckpoints;
         }
         if (other.gameObject.tag == "Finish" && checkpointCount >= maxCheckpoints)
         {
