@@ -58,13 +58,13 @@ public class ShipDrive : MonoBehaviour
         {
             rb.AddRelativeForce(new Vector3(0, 0, 100));
             forward = true;
-            print("Velocity: " + rb.velocity.magnitude);
+            //print("Velocity: " + rb.velocity.magnitude);
         }
         else if ((UnityEngine.Input.GetKey(KeyCode.S) || ff1.Player.Decelerate.IsPressed()) && (grounded == true))
         {
             rb.AddRelativeForce(new Vector3(0, 0, -100));
             forward = false;
-            print("Velocity: -" + rb.velocity.magnitude);
+            //print("Velocity: -" + rb.velocity.magnitude);
         }
 
         if(rb.velocity.magnitude > 0 && forward == true)//Gradually Slow the Speedship down (when it's going forwards)
