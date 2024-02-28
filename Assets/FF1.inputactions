@@ -367,8 +367,30 @@
                 },
                 {
                     "name": "",
+                    "id": "cd88292e-b466-447a-8338-fbcb3e553467",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StrafeRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b95f4c6d-53ab-4983-a894-343432f1b7b5",
                     "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StrafeLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "722f1986-5dde-4323-bf58-7e90645cf8fb",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -389,6 +411,17 @@
                 },
                 {
                     "name": "",
+                    "id": "3f91922a-fbed-43f2-a800-fbb23349b344",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Accelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "36ef27a8-3f7b-49fd-914c-96fb12ff7d43",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
@@ -402,6 +435,17 @@
                     "name": "",
                     "id": "a7ec4868-dfb3-4ab7-a9ab-73fe1df40ea5",
                     "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Decelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "109c0eec-e093-431e-b814-73656c54dd35",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
