@@ -20,6 +20,7 @@ public class ShipDrive : MonoBehaviour
     private InputActionAsset inputActions;
 
     private Vector2 moveInput;
+    private
     //public int onGround = 0;
     // Start is called before the first frame update
     void Start()
@@ -53,14 +54,16 @@ public class ShipDrive : MonoBehaviour
     {
         //moveInput = ff1.Player.Move.ReadValue<Vector2>();
         moveInput = inputActions["Move"].ReadValue<Vector2>();
+        var Accelerate = inputActions["Accelerate"].ReadValue<float>();
+        var Decelerate = inputActions["Decelerate"].ReadValue<float>();
         //print("Move Input: " + moveInput.x + " " + moveInput.y);
-        if ((UnityEngine.Input.GetKey(KeyCode.W) || ff1.Player.Accelerate.IsPressed()) && grounded == true)
+        if (/*(UnityEngine.Input.GetKey(KeyCode.W) || */ /*ff1.Player.Accelerate.IsPressed()*/ Mathf.Approximately(Accelerate, 1f) && grounded == true)
         {
             rb.AddRelativeForce(new Vector3(0, 0, 100));
             forward = true;
             //print("Velocity: " + rb.velocity.magnitude);
         }
-        else if ((UnityEngine.Input.GetKey(KeyCode.S) || ff1.Player.Decelerate.IsPressed()) && (grounded == true))
+        else if (/*(UnityEngine.Input.GetKey(KeyCode.S) ||*/ Mathf.Approximately(Decelerate, 1f) && (grounded == true))
         {
             rb.AddRelativeForce(new Vector3(0, 0, -100));
             forward = false;
@@ -95,13 +98,15 @@ public class ShipDrive : MonoBehaviour
         Vector3 localVel = transform.InverseTransformDirection(rb.velocity);
         localVel.x = 0;
         rb.velocity = transform.TransformDirection(localVel);
+        var StrafeRight = inputActions["StrafeRight"].ReadValue<float>();
+        var StrafeLeft = inputActions["StrafeLeft"].ReadValue<float>();
 
-        if((UnityEngine.Input.GetKey(KeyCode.R) || ff1.Player.StrafeRight.IsPressed()) && (UnityEngine.Input.GetKey(KeyCode.W) || ff1.Player.Accelerate.IsPressed()))//Strafing Right
+        if (/*(UnityEngine.Input.GetKey(KeyCode.R) ||*/ Mathf.Approximately(StrafeRight, 1f) && /*(UnityEngine.Input.GetKey(KeyCode.W) ||*/ Mathf.Approximately(Accelerate, 1f))//Strafing Right
         {
             rb.AddRelativeForce(new Vector3(15 * rb.velocity.magnitude, 0, 0));
         }
 
-        if ((UnityEngine.Input.GetKey(KeyCode.Q) || ff1.Player.StrafeLeft.IsPressed()) && (UnityEngine.Input.GetKey(KeyCode.W) || ff1.Player.Accelerate.IsPressed()))//Strafing Left
+        if (/*(UnityEngine.Input.GetKey(KeyCode.Q) ||*/ Mathf.Approximately(StrafeLeft, 1f) && /*(UnityEngine.Input.GetKey(KeyCode.W) ||*/ Mathf.Approximately(Accelerate, 1f))//Strafing Left
         {
             rb.AddRelativeForce(new Vector3(-15 * rb.velocity.magnitude, 0, 0));
         }
