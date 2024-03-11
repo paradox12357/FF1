@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
 using UnityEngine.InputSystem;
-
+//ADDING A DRIFT MECHANIC WOULD MAKE TURNS MUCH MUCH EASIER TO PREPARE FOR AND INCREASE GAME DEPTH
 public class ShipDrive : MonoBehaviour
 {
     //public float speed;
@@ -15,6 +15,7 @@ public class ShipDrive : MonoBehaviour
     public bool forward = false;
     public float groundedCheckDistance;
     public Vector3 currentEulerAngles;
+    //bool centerred = false;
     //private float bufferCheckDistance = 0.1f;
     //public Vector3 forwardDirection = Vector3.forward;
 
@@ -128,6 +129,16 @@ public class ShipDrive : MonoBehaviour
             rb.AddTorque(-Vector3.up * turnSpeed);
 
         }
+        if (moveInput.x > 0 && grounded == false)
+        {
+            rb.AddTorque(Vector3.up * turnSpeed * 0.5f);
+            //print("LMAOAOAAOAOAOAOAOAOAO");
+        }
+        if (moveInput.x < 0 && grounded == false)
+        {
+            rb.AddTorque(-Vector3.up * turnSpeed * 0.5f);
+
+        }
         //currentEulerAngles += new Vector3(moveInput.x, 0, 0) * Time.deltaTime * 1.0f;
         //transform.eulerAngles = currentEulerAngles;
 
@@ -147,6 +158,29 @@ public class ShipDrive : MonoBehaviour
         {
             //rb.rotation.x = 0; 
             rb.AddForce(Vector3.down * gravMult);
+            /*if(transform.forward.y > 0 && centerred == false)
+            {
+                transform.forward = new Vector3(transform.forward.x, transform.forward.y - 0.05f, transform.forward.z);
+                //if(transform.forward.y == 0)
+                //{
+                //    centerred = true;
+                //}
+            }
+            if (transform.forward.y < 0 && centerred == false)
+            {
+                transform.forward = new Vector3(transform.forward.x, transform.forward.y + 0.05f, transform.forward.z);
+                //if (transform.forward.y == 0)
+                //{
+                //    centerred = true;
+                //}
+            }*/
+            transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
+            
+            //if(centerred == true)
+            //{
+            //    transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
+            //}
+
             //Quaternion targetRotation = Quaternion.Euler(new Vector3(moveInput.x, moveInput.y, 0));
             //rb.MoveRotation(Quaternion.Lerp(rb.rotation, targetRotation, 2f * Time.fixedDeltaTime));
             //Quaternion targetRotation = Quaternion.LookRotation(forwardDirection);
@@ -154,14 +188,42 @@ public class ShipDrive : MonoBehaviour
         }
         else if (grounded == true)
         {
+            //centerred = false;
             rb.AddForce(Vector3.down * 15);
         }
     }
-    /*private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision col)
     {
-        grounded = true;
+        //grounded = true;
+        //print("HIT WALL LOLOLOLOL!!");
+        if (col.gameObject.name.Contains("Wall"))
+        {
+            //print("WALLHIT!!!");
+            //rb.AddRelativeForce(new Vector3(0, 10, -100));
+            //transform.forward = new Vector3(-transform.forward.x, transform.forward.y, transform.forward.z);
+            Vector3 reflectionDirection = Vector3.Reflect(rb.velocity, col.contacts[0].normal);
+            //print("Old Vel = " + rb.velocity);
+            //print("New Vel = " + reflectionDirection);
+            //print("Normal of Col = " + col.contacts[0].normal);
+            //Vector3 reflectionDirection = Vector3.Reflect(rb.velocity, col.GetContact(0).normal);
+            //Vector3 reflectionDirection = Vector3.Reflect(rb.velocity, );
+            rb.velocity = reflectionDirection;
+            //Destroy(col.gameObject);
+            
+            //rb.AddForce(Vector3.Reflect(rb.velocity.normalized, col.contacts[0].normal));
+
+        }
+        if (col.gameObject.name.Contains("Cylinder"))
+        {
+            //print("CYLINDERHIT!!");
+        }
+        //if (col.gameObject.name.Contains("Wall"))
+        //{
+        //    print("HIT WALL LOLOLOLOL!!");
+        //}
     }
-    private void OnCollisionExit(Collision collision)
+
+    /*private void OnCollisionExit(Collision collision)
     {
         grounded = false;
     }*/
