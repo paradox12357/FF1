@@ -169,7 +169,7 @@ public class ShipDrive : MonoBehaviour
     {
         if(grounded /*&& rb.velocity.magnitude < 0.01f*/)
         {
-            print("Ship normal y val: " + shipObj.localPosition.y);//1.56
+            //print("Ship normal y val: " + shipObj.localPosition.y);//1.56
             /*if(goingUp == false)
             {
                 shipObj.localPosition = new Vector3(shipObj.localPosition.x, shipObj.localPosition.y - 0.01f, shipObj.localPosition.z);
