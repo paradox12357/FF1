@@ -97,6 +97,14 @@ public class ShipDrive : MonoBehaviour
             {
                 rb.AddRelativeForce(new Vector3(0, 0, -0.5f * rb.velocity.magnitude));
             }
+            if(shipObj.localPosition.y > 1.25f)
+            {
+                shipObj.localPosition = new Vector3(shipObj.localPosition.x, shipObj.localPosition.y - 0.01f, shipObj.localPosition.z);
+            }
+            if (shipObj.localPosition.y < 1.25f)
+            {
+                shipObj.localPosition = new Vector3(shipObj.localPosition.x, shipObj.localPosition.y + 0.01f, shipObj.localPosition.z);
+            }
 
         }
         if (rb.velocity.magnitude > 0 && forward == false)//Gradually Slow the Speedship down (when it's going backwards)
@@ -109,7 +117,14 @@ public class ShipDrive : MonoBehaviour
             {
                 rb.AddRelativeForce(new Vector3(0, 0, 0.5f * rb.velocity.magnitude));
             }
-
+            if (shipObj.localPosition.y > 1.25f)
+            {
+                shipObj.localPosition = new Vector3(shipObj.localPosition.x, shipObj.localPosition.y - 0.01f, shipObj.localPosition.z);
+            }
+            if (shipObj.localPosition.y < 1.25f)
+            {
+                shipObj.localPosition = new Vector3(shipObj.localPosition.x, shipObj.localPosition.y + 0.01f, shipObj.localPosition.z);
+            }
         }
 
         Vector3 localVel = transform.InverseTransformDirection(rb.velocity);
@@ -167,7 +182,7 @@ public class ShipDrive : MonoBehaviour
 
     void Oscillate()
     {
-        if(grounded /*&& rb.velocity.magnitude < 0.01f*/)
+        if(grounded && rb.velocity.magnitude < 0.01f)
         {
             //print("Ship normal y val: " + shipObj.localPosition.y);//1.56
             /*if(goingUp == false)
@@ -187,14 +202,15 @@ public class ShipDrive : MonoBehaviour
                     goingUp = false;
                 }
             }*/
-            //timer += Time.deltaTime;
+            timer += Time.deltaTime;
             //float oscillatingValue = Mathf.Lerp(1.06f, 3.0f, Mathf.Sin(timer * 0.7f));
-            shipObj.localPosition = new Vector3(shipObj.localPosition.x, Mathf.Sin(Time.time) * 0.4f + 1.25f, shipObj.localPosition.z);
+            shipObj.localPosition = new Vector3(shipObj.localPosition.x, Mathf.Sin(timer) * 0.4f + 1.25f, shipObj.localPosition.z);
         }
-        //else if(grounded)
-        //{
-        //    shipObj.localPosition = new Vector3(shipObj.localPosition.x, 1.1f, shipObj.localPosition.z);
-        //}
+        else if(grounded && rb.velocity.magnitude > 0.01f)
+        {
+            //shipObj.localPosition = new Vector3(shipObj.localPosition.x, 1.1f, shipObj.localPosition.z);
+            timer = 0.0f;
+        }
     }
     void Fall()
     {
