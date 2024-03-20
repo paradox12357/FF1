@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.014407376, g: 0.05795963, b: 0.10584588, a: 1}
+  m_IndirectSpecularColor: {r: 0.014407376, g: 0.05795964, b: 0.10584588, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14067,6 +14067,11 @@ PrefabInstance:
       propertyPath: maxCheckpoints
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7585789182472443855, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: checkpointCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
       propertyPath: turnSpeed
@@ -14077,6 +14082,11 @@ PrefabInstance:
       propertyPath: checkpointCounter
       value: 
       objectReference: {fileID: 8403816325009236870}
+    - target: {fileID: 8790650521487654594, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8998787334440306965, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
       propertyPath: m_fontSize
@@ -14137,6 +14147,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124565812338736533, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124565812338736533, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124565812338736533, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124565812338736533, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

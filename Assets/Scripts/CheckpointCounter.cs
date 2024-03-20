@@ -51,22 +51,23 @@ public class CheckpointCounter : MonoBehaviour
             {
                 case 1:
                     Victory.text = "1st Place!";
-                    image.color = new Color(212,175,55);
+                    image.color = new Color(212/255f,175/255f,55/255f);
+                    //image.color = new Color(0, 10, 55);
                     break;
                 case 2:
                     Victory.text = "2nd Place!";
-                    image.color = new Color(192, 192, 192);
+                    image.color = new Color(192/255f, 192 / 255f, 192 / 255f);
                     break;
                 case 3:
                     Victory.text = "3rd Place!";
-                    image.color = new Color(205, 127, 50);
+                    image.color = new Color(205 / 255f, 127 / 255f, 50 / 255f);
                     break;
                 default:
                     Victory.text = winners + "th Place!";
-                    image.color = new Color(0, 0, 0);
+                    image.color = new Color(0f, 0f, 0f);
                     break;
             }
-            
+
         }
     }
 }
