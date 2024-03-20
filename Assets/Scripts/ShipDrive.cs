@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 //ADDING A DRIFT MECHANIC WOULD MAKE TURNS MUCH MUCH EASIER TO PREPARE FOR AND INCREASE GAME DEPTH
 public class ShipDrive : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class ShipDrive : MonoBehaviour
     public bool forward = false;
     public float groundedCheckDistance;
     public Vector3 currentEulerAngles;
+    public Transform shipObj;
+    //public double targetHigh = 2.06;
+    //public double targetLow = 1.06;
+    //bool goingUp;
+    public float timer = 0f;
     //bool centerred = false;
     //private float bufferCheckDistance = 0.1f;
     //public Vector3 forwardDirection = Vector3.forward;
@@ -33,6 +39,12 @@ public class ShipDrive : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ff1.Player.Enable();
         inputActions.Enable();
+        shipObj = transform.Find("Gemini");
+        //goingUp = false;
+        if (shipObj == null)
+        {
+            print("BRUH!!!");
+        }
     }
 
     // Update is called once per frame
@@ -40,7 +52,7 @@ public class ShipDrive : MonoBehaviour
     {
         groundedCheckDistance = 1.1f;
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, -transform.up, out hit, groundedCheckDistance))
+        if (Physics.Raycast(transform.position, -transform.up, out hit, groundedCheckDistance))
         {
             grounded = true;//ray hits the ground
         }
@@ -52,6 +64,7 @@ public class ShipDrive : MonoBehaviour
         Accelerate();
         Turn();
         Fall();
+        Oscillate();
     }
     void Accelerate()
     {
@@ -73,7 +86,7 @@ public class ShipDrive : MonoBehaviour
             //print("Velocity: -" + rb.velocity.magnitude);
         }
 
-        if(rb.velocity.magnitude > 0 && forward == true)//Gradually Slow the Speedship down (when it's going forwards)
+        if (rb.velocity.magnitude > 0 && forward == true)//Gradually Slow the Speedship down (when it's going forwards)
         {
             if (rb.velocity.magnitude > 75)
             {
@@ -83,6 +96,14 @@ public class ShipDrive : MonoBehaviour
             else
             {
                 rb.AddRelativeForce(new Vector3(0, 0, -0.5f * rb.velocity.magnitude));
+            }
+            if (shipObj.localPosition.y > 1.25f)
+            {
+                shipObj.localPosition = new Vector3(shipObj.localPosition.x, shipObj.localPosition.y - 0.01f, shipObj.localPosition.z);
+            }
+            if (shipObj.localPosition.y < 1.25f)
+            {
+                shipObj.localPosition = new Vector3(shipObj.localPosition.x, shipObj.localPosition.y + 0.01f, shipObj.localPosition.z);
             }
 
         }
@@ -96,7 +117,14 @@ public class ShipDrive : MonoBehaviour
             {
                 rb.AddRelativeForce(new Vector3(0, 0, 0.5f * rb.velocity.magnitude));
             }
-
+            if (shipObj.localPosition.y > 1.25f)
+            {
+                shipObj.localPosition = new Vector3(shipObj.localPosition.x, shipObj.localPosition.y - 0.01f, shipObj.localPosition.z);
+            }
+            if (shipObj.localPosition.y < 1.25f)
+            {
+                shipObj.localPosition = new Vector3(shipObj.localPosition.x, shipObj.localPosition.y + 0.01f, shipObj.localPosition.z);
+            }
         }
 
         Vector3 localVel = transform.InverseTransformDirection(rb.velocity);
@@ -107,7 +135,7 @@ public class ShipDrive : MonoBehaviour
 
         if (/*(UnityEngine.Input.GetKey(KeyCode.R) ||*/ Mathf.Approximately(StrafeRight, 1f)/*(UnityEngine.Input.GetKey(KeyCode.W) ||*/)//Strafing Right
         {
-            rb.AddRelativeForce(new Vector3((15 * rb.velocity.magnitude) - rb.velocity.x, 0, 0)); 
+            rb.AddRelativeForce(new Vector3((15 * rb.velocity.magnitude) - rb.velocity.x, 0, 0));
         }
 
         if (/*(UnityEngine.Input.GetKey(KeyCode.Q) ||*/ Mathf.Approximately(StrafeLeft, 1f) /*(UnityEngine.Input.GetKey(KeyCode.W) ||*/)//Strafing Left // Mathf.Approximately(Accelerate, 1f)
@@ -122,12 +150,13 @@ public class ShipDrive : MonoBehaviour
         if (moveInput.x > 0 && grounded == true)
         {
             rb.AddTorque(Vector3.up * turnSpeed);
+            //shipObj.localRotation = Quaternion.Euler(new Vector3(shipObj.localRotation.x + 0.01f, shipObj.localRotation.y, shipObj.localRotation.z));
+            //shipObj.transform.Rotate(new Vector3(1f, 0, 0));
             //print("LMAOAOAAOAOAOAOAOAOAO");
         }
         if (moveInput.x < 0 && grounded == true)
         {
             rb.AddTorque(-Vector3.up * turnSpeed);
-
         }
         if (moveInput.x > 0 && grounded == false)
         {
@@ -151,6 +180,38 @@ public class ShipDrive : MonoBehaviour
         //rb.AddForce(driftForce, ForceMode.Acceleration);
     }
 
+    void Oscillate()
+    {
+        if (grounded && rb.velocity.magnitude < 0.01f)
+        {
+            //print("Ship normal y val: " + shipObj.localPosition.y);//1.56
+            /*if(goingUp == false)
+            {
+                shipObj.localPosition = new Vector3(shipObj.localPosition.x, shipObj.localPosition.y - 0.01f, shipObj.localPosition.z);
+                if((double)shipObj.localPosition.y == targetLow)
+                {
+                    goingUp = true;
+                    print("LOLOLOL");
+                }
+            }
+            else
+            {
+                shipObj.localPosition = new Vector3(shipObj.localPosition.x, shipObj.localPosition.y + 0.01f, shipObj.localPosition.z);
+                if (shipObj.localPosition.y == targetHigh)
+                {
+                    goingUp = false;
+                }
+            }*/
+            timer += Time.deltaTime;
+            //float oscillatingValue = Mathf.Lerp(1.06f, 3.0f, Mathf.Sin(timer * 0.7f));
+            shipObj.localPosition = new Vector3(shipObj.localPosition.x, Mathf.Sin(timer) * 0.4f + 1.25f, shipObj.localPosition.z);
+        }
+        else if (grounded && rb.velocity.magnitude > 0.01f)
+        {
+            //shipObj.localPosition = new Vector3(shipObj.localPosition.x, 1.1f, shipObj.localPosition.z);
+            timer = 0.0f;
+        }
+    }
     void Fall()
     {
 
@@ -175,7 +236,6 @@ public class ShipDrive : MonoBehaviour
                 //}
             }*/
             transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
-            
             //if(centerred == true)
             //{
             //    transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
@@ -209,7 +269,7 @@ public class ShipDrive : MonoBehaviour
             //Vector3 reflectionDirection = Vector3.Reflect(rb.velocity, );
             rb.velocity = reflectionDirection;
             //Destroy(col.gameObject);
-            
+
             //rb.AddForce(Vector3.Reflect(rb.velocity.normalized, col.contacts[0].normal));
 
         }
