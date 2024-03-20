@@ -41,7 +41,7 @@ public class ShipDrive : MonoBehaviour
         inputActions.Enable();
         shipObj = transform.Find("Gemini");
         //goingUp = false;
-        if(shipObj == null)
+        if (shipObj == null)
         {
             print("BRUH!!!");
         }
@@ -52,7 +52,7 @@ public class ShipDrive : MonoBehaviour
     {
         groundedCheckDistance = 1.1f;
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, -transform.up, out hit, groundedCheckDistance))
+        if (Physics.Raycast(transform.position, -transform.up, out hit, groundedCheckDistance))
         {
             grounded = true;//ray hits the ground
         }
@@ -86,7 +86,7 @@ public class ShipDrive : MonoBehaviour
             //print("Velocity: -" + rb.velocity.magnitude);
         }
 
-        if(rb.velocity.magnitude > 0 && forward == true)//Gradually Slow the Speedship down (when it's going forwards)
+        if (rb.velocity.magnitude > 0 && forward == true)//Gradually Slow the Speedship down (when it's going forwards)
         {
             if (rb.velocity.magnitude > 75)
             {
@@ -97,7 +97,7 @@ public class ShipDrive : MonoBehaviour
             {
                 rb.AddRelativeForce(new Vector3(0, 0, -0.5f * rb.velocity.magnitude));
             }
-            if(shipObj.localPosition.y > 1.25f)
+            if (shipObj.localPosition.y > 1.25f)
             {
                 shipObj.localPosition = new Vector3(shipObj.localPosition.x, shipObj.localPosition.y - 0.01f, shipObj.localPosition.z);
             }
@@ -135,7 +135,7 @@ public class ShipDrive : MonoBehaviour
 
         if (/*(UnityEngine.Input.GetKey(KeyCode.R) ||*/ Mathf.Approximately(StrafeRight, 1f)/*(UnityEngine.Input.GetKey(KeyCode.W) ||*/)//Strafing Right
         {
-            rb.AddRelativeForce(new Vector3((15 * rb.velocity.magnitude) - rb.velocity.x, 0, 0)); 
+            rb.AddRelativeForce(new Vector3((15 * rb.velocity.magnitude) - rb.velocity.x, 0, 0));
         }
 
         if (/*(UnityEngine.Input.GetKey(KeyCode.Q) ||*/ Mathf.Approximately(StrafeLeft, 1f) /*(UnityEngine.Input.GetKey(KeyCode.W) ||*/)//Strafing Left // Mathf.Approximately(Accelerate, 1f)
@@ -182,7 +182,7 @@ public class ShipDrive : MonoBehaviour
 
     void Oscillate()
     {
-        if(grounded && rb.velocity.magnitude < 0.01f)
+        if (grounded && rb.velocity.magnitude < 0.01f)
         {
             //print("Ship normal y val: " + shipObj.localPosition.y);//1.56
             /*if(goingUp == false)
@@ -206,7 +206,7 @@ public class ShipDrive : MonoBehaviour
             //float oscillatingValue = Mathf.Lerp(1.06f, 3.0f, Mathf.Sin(timer * 0.7f));
             shipObj.localPosition = new Vector3(shipObj.localPosition.x, Mathf.Sin(timer) * 0.4f + 1.25f, shipObj.localPosition.z);
         }
-        else if(grounded && rb.velocity.magnitude > 0.01f)
+        else if (grounded && rb.velocity.magnitude > 0.01f)
         {
             //shipObj.localPosition = new Vector3(shipObj.localPosition.x, 1.1f, shipObj.localPosition.z);
             timer = 0.0f;
@@ -269,7 +269,7 @@ public class ShipDrive : MonoBehaviour
             //Vector3 reflectionDirection = Vector3.Reflect(rb.velocity, );
             rb.velocity = reflectionDirection;
             //Destroy(col.gameObject);
-            
+
             //rb.AddForce(Vector3.Reflect(rb.velocity.normalized, col.contacts[0].normal));
 
         }
