@@ -24,6 +24,7 @@ public class ShipDrive : MonoBehaviour
     //bool centerred = false;
     //private float bufferCheckDistance = 0.1f;
     //public Vector3 forwardDirection = Vector3.forward;
+    public CheckpointCounter checkpointCounter;
 
     private FF1 ff1;
     private InputActionAsset inputActions;
@@ -61,10 +62,36 @@ public class ShipDrive : MonoBehaviour
             grounded = false;//ray does not hit the ground
         }
         //print("Torque: " + rb.GetAccumulatedTorque());
-        Accelerate();
-        Turn();
+        if (checkpointCounter.hasFinished == false)
+        {
+            Accelerate();
+            Turn();
+        }
         Fall();
         Oscillate();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.tag == "Boost")
+        {
+            var Accelerate = inputActions["Accelerate"].ReadValue<float>();
+            if (/*(UnityEngine.Input.GetKey(KeyCode.W) || */ /*ff1.Player.Accelerate.IsPressed()*/ Mathf.Approximately(Accelerate, 1f) && grounded == true)
+            {
+                rb.AddRelativeForce(new Vector3(0, 0, 100));
+                //print("Velocity: " + rb.velocity.magnitude);
+            }
+        }
+        if (other.gameObject.tag == "Offroad")
+        {
+            var Accelerate = inputActions["Accelerate"].ReadValue<float>();
+            if (/*(UnityEngine.Input.GetKey(KeyCode.W) || */ /*ff1.Player.Accelerate.IsPressed()*/ Mathf.Approximately(Accelerate, 1f) && grounded == true)
+            {
+                rb.AddRelativeForce(new Vector3(0, 0, -50));
+                //print("Velocity: " + rb.velocity.magnitude);
+            }
+        }
     }
     void Accelerate()
     {

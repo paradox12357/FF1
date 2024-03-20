@@ -13,6 +13,7 @@ public class CheckpointCounter : MonoBehaviour
     {
         checkpointNames = new String[maxCheckpoints];
         checkpointText.text = "Gates: 0/" + maxCheckpoints;
+        image.enabled = false;
     }
 
     // Update is called once per frame
@@ -20,12 +21,14 @@ public class CheckpointCounter : MonoBehaviour
     {
 
     }
-
+    public static int winners = 0;
     public int checkpointCount = 0;
     public bool hasFinished = false;
     public int maxCheckpoints = 3;
     public String[] checkpointNames;
     public TextMeshProUGUI checkpointText;
+    public TextMeshProUGUI Victory;
+    public Image image;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -42,6 +45,28 @@ public class CheckpointCounter : MonoBehaviour
             hasFinished = true;
             Debug.Log("You have reached the finish line!");
             checkpointText.text = "GOAL!";
+            winners++;
+            image.enabled = true;
+            switch (winners)
+            {
+                case 1:
+                    Victory.text = "1st Place!";
+                    image.color = new Color(212,175,55);
+                    break;
+                case 2:
+                    Victory.text = "2nd Place!";
+                    image.color = new Color(192, 192, 192);
+                    break;
+                case 3:
+                    Victory.text = "3rd Place!";
+                    image.color = new Color(205, 127, 50);
+                    break;
+                default:
+                    Victory.text = winners + "th Place!";
+                    image.color = new Color(0, 0, 0);
+                    break;
+            }
+            
         }
     }
 }

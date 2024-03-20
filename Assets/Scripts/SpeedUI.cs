@@ -24,5 +24,6 @@ public class SpeedUI : MonoBehaviour
         totalvelocity = (float)Math.Sqrt(Math.Pow(xVelocity, 2) + Math.Pow(yVelocity, 2) + Math.Pow(zVelocity, 2));
         totalvelocity = (float)Math.Round(totalvelocity, 3);
         speedText.text = "Speed: " + totalvelocity.ToString();
+        
     }
 }
