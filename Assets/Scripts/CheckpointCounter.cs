@@ -29,6 +29,8 @@ public class CheckpointCounter : MonoBehaviour
     public TextMeshProUGUI checkpointText;
     public TextMeshProUGUI Victory;
     public Image image;
+    public TextMeshProUGUI score;
+    public TextMeshProUGUI speed;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -47,6 +49,9 @@ public class CheckpointCounter : MonoBehaviour
             checkpointText.text = "GOAL!";
             winners++;
             image.enabled = true;
+            checkpointText.enabled = false;
+            score.enabled = false;
+            speed.enabled = false;
             switch (winners)
             {
                 case 1:
