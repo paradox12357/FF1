@@ -7,6 +7,12 @@ TagManager:
   - Checkpoint
   - Boost
   - Offroad
+  - TeleportA
+  - TeleportB
+  - TeleportC
+  - TeleportD
+  - TeleportE
+  - TeleportF
   layers:
   - Default
   - TransparentFX
