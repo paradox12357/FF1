@@ -455,6 +455,17 @@ public partial class @FF1: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c81cf863-6fd8-4234-a502-9d3ab9bbb66e"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ItemUse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a7ec4868-dfb3-4ab7-a9ab-73fe1df40ea5"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
