@@ -20,12 +20,12 @@ public class lightBehavior : MonoBehaviour
         lightUp = 0;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         //myLight.intensity = Mathf.PingPong(Time.time, 100f);
         if (lightingUp)
         {
-            if(myLight.name.Contains("gemini"))
+            /*if(myLight.name.Contains("gemini"))
             {
                 myLight.intensity = Mathf.Cos(lightUp) + 0.8f;
                 lightUp++;
@@ -34,10 +34,14 @@ public class lightBehavior : MonoBehaviour
             {
                 myLight.intensity = Mathf.Cos(lightUp) + 0.8f;
                 lightUp += 0.5f;
-            }
-            
+            }*/
+            myLight.intensity = Mathf.Cos(lightUp) + 1.2f;
+            lightUp += 0.25f;
+            //myLight.intensity = 10 - lightUp;
+            //lightUp += 0.5f;
+
         }
-        if(lightUp > 100)
+        if(lightUp > 1.5f)
         {
             lightingUp = false;
         }
