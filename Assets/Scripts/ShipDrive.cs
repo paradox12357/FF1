@@ -78,6 +78,7 @@ public class ShipDrive : MonoBehaviour
         {
             Accelerate();
             Turn();
+            useItem();
         }
         Fall();
         Oscillate();
@@ -294,7 +295,11 @@ public class ShipDrive : MonoBehaviour
 
     void useItem()
     {
-        this.currentItem = "None";
+        var ItemUse = inputActions["ItemUse"].ReadValue<float>();
+        if (Mathf.Approximately(ItemUse, 1f) == true)
+        {
+            currentItem = "None";
+        }
     }
 
     private void OnCollisionEnter(Collision col)
