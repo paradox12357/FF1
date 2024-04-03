@@ -437,7 +437,7 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "ItemUse",
                     "isComposite": false,
                     "isPartOfComposite": false

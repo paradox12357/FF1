@@ -459,7 +459,7 @@ public partial class @FF1: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""ItemUse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
