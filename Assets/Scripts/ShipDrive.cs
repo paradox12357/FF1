@@ -34,8 +34,12 @@ public class ShipDrive : MonoBehaviour
     public int Player = 0;
     public Cinemachine.CinemachineVirtualCamera cam;
     [SerializeField] public Camera cam2;
-    
-    //private
+
+    //Sound stuff
+    bool accelPressed;
+    bool decelPressed;
+    bool strafeRightPressed;
+    bool strafeLeftPressed;
     //public int onGround = 0;
     // Start is called before the first frame update
     void Start()
@@ -110,6 +114,49 @@ public class ShipDrive : MonoBehaviour
         moveInput = inputActions["Move"].ReadValue<Vector2>();
         var Accelerate = inputActions["Accelerate"].ReadValue<float>();
         var Decelerate = inputActions["Decelerate"].ReadValue<float>();
+        var StrafeRight = inputActions["StrafeRight"].ReadValue<float>();
+        var StrafeLeft = inputActions["StrafeLeft"].ReadValue<float>();
+
+        //Sound Effects for Accelerating/Decelerating/Strafing
+        if (Mathf.Approximately(Accelerate, 1f) && accelPressed == false)
+        {
+            FindObjectOfType<SoundEffectPlayer>().Play("engineStart");
+            accelPressed = true;
+        }
+        if(Mathf.Approximately(Accelerate, 0f))
+        {
+            accelPressed = false;
+        }
+
+        if (Mathf.Approximately(Decelerate, 1f) && decelPressed == false)
+        {
+            FindObjectOfType<SoundEffectPlayer>().Play("brake");
+            decelPressed = true;
+        }
+        if (Mathf.Approximately(Decelerate, 0f))
+        {
+            decelPressed = false;
+        }
+
+        if (Mathf.Approximately(StrafeRight, 1f) && strafeRightPressed == false)
+        {
+            FindObjectOfType<SoundEffectPlayer>().Play("strafeRight");
+            strafeRightPressed = true;
+        }
+        if (Mathf.Approximately(StrafeRight, 0f))
+        {
+            strafeRightPressed = false;
+        }
+
+        if (Mathf.Approximately(StrafeLeft, 1f) && strafeLeftPressed == false)
+        {
+            FindObjectOfType<SoundEffectPlayer>().Play("strafeLeft");
+            strafeLeftPressed = true;
+        }
+        if (Mathf.Approximately(StrafeLeft, 0f))
+        {
+            strafeLeftPressed = false;
+        }
         //print("Move Input: " + moveInput.x + " " + moveInput.y);
         if (/*(UnityEngine.Input.GetKey(KeyCode.W) || */ /*ff1.Player.Accelerate.IsPressed()*/ Mathf.Approximately(Accelerate, 1f) && grounded == true)
         {
@@ -168,8 +215,7 @@ public class ShipDrive : MonoBehaviour
         Vector3 localVel = transform.InverseTransformDirection(rb.velocity);
         localVel.x = 0;
         rb.velocity = transform.TransformDirection(localVel);
-        var StrafeRight = inputActions["StrafeRight"].ReadValue<float>();
-        var StrafeLeft = inputActions["StrafeLeft"].ReadValue<float>();
+        
 
         if (/*(UnityEngine.Input.GetKey(KeyCode.R) ||*/ Mathf.Approximately(StrafeRight, 1f)/*(UnityEngine.Input.GetKey(KeyCode.W) ||*/)//Strafing Right
         {
@@ -305,7 +351,24 @@ public class ShipDrive : MonoBehaviour
             //print("Normal of Col = " + col.contacts[0].normal);
             //Vector3 reflectionDirection = Vector3.Reflect(rb.velocity, col.GetContact(0).normal);
             //Vector3 reflectionDirection = Vector3.Reflect(rb.velocity, );
+
+            //Sound Effects for hitting walls
             rb.velocity = reflectionDirection;
+            int rand = Random.Range(0, 2);
+            if(rand == 0)
+            {
+                FindObjectOfType<SoundEffectPlayer>().Play("wallHitOne");
+            }
+            if (rand == 1)
+            {
+                FindObjectOfType<SoundEffectPlayer>().Play("wallHitTwo");
+            }
+            if (rand == 2)
+            {
+                FindObjectOfType<SoundEffectPlayer>().Play("wallHitThree");
+            }
+
+            
             //Destroy(col.gameObject);
 
             //rb.AddForce(Vector3.Reflect(rb.velocity.normalized, col.contacts[0].normal));
