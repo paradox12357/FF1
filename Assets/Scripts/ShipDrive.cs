@@ -67,6 +67,12 @@ public class ShipDrive : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ff1.Player.Enable();
         inputActions.Enable();
+        // temp ship select
+        shipSelect = Player - 1;
+        if (shipSelect > 2)
+        {
+            shipSelect = 0;
+        }
 
         //Ship Select
         if(shipSelect == 0)//Gemini
