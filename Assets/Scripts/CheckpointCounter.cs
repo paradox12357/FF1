@@ -46,6 +46,7 @@ public class CheckpointCounter : MonoBehaviour
         {
             checkpointNames[checkpointCount] = other.gameObject.name;
             checkpointCount++;
+            FindObjectOfType<SoundEffectPlayer>().Play("checkpointHit");
             Debug.Log("Checkpoint Count: " + checkpointCount);
             checkpointText.text = "Gates: " + checkpointCount + "/" + maxCheckpoints;
             switch (Player)
