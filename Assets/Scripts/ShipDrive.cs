@@ -44,6 +44,16 @@ public class ShipDrive : MonoBehaviour
     public GameObject virgoShip;
     public GameObject scorpioShip;
     public int shipSelect;
+
+    //Ship Engine Effect Stuff
+    public GameObject lightFive;
+    public GameObject lightFour;
+    public GameObject lightThree;
+    public GameObject lightTwo;
+    public GameObject lightOne;
+    public GameObject lightScorpioOne;
+    public GameObject lightScorpioTwo;
+    public GameObject lightVirgo;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +78,11 @@ public class ShipDrive : MonoBehaviour
             geminiShip.SetActive(true);
             gravMult = 100;
             turnSpeed = 25f;
+            /*lightFive = GameObject.Find("geminiLightFive");
+            lightFour = GameObject.Find("geminiLightFour");
+            lightThree = GameObject.Find("geminiLightThree");
+            lightTwo = GameObject.Find("geminiLightTwo");
+            lightOne = GameObject.Find("geminiLightOne");*/
         }
         if (shipSelect == 1)//Virgo
         {
@@ -95,7 +110,8 @@ public class ShipDrive : MonoBehaviour
         // set cam to the layer for the player
         cam.gameObject.layer = Player + 5;
         cam2.cullingMask |= 1 << (Player + 5);
-        
+
+
     }
 
     // Update is called once per frame
@@ -152,6 +168,36 @@ public class ShipDrive : MonoBehaviour
         var StrafeRight = inputActions["StrafeRight"].ReadValue<float>();
         var StrafeLeft = inputActions["StrafeLeft"].ReadValue<float>();
 
+        //Engine Fire
+        if (Mathf.Approximately(Accelerate, 1f) && shipSelect == 0 && accelPressed == false)
+        {
+            
+            lightOne.SetActive(true);
+            
+            lightTwo.SetActive(true);
+            
+            lightThree.SetActive(true);
+            
+            lightFour.SetActive(true);
+            
+            lightFive.SetActive(true);
+            
+        }
+
+        if (Mathf.Approximately(Accelerate, 1f) && shipSelect == 2 && accelPressed == false)
+        {
+
+            lightScorpioOne.SetActive(true);
+            lightScorpioTwo.SetActive(true);    
+
+        }
+
+        if (Mathf.Approximately(Accelerate, 1f) && shipSelect == 1 && accelPressed == false)
+        {
+
+            lightVirgo.SetActive(true);
+
+        }
         //Sound Effects for Accelerating/Decelerating/Strafing
         if (Mathf.Approximately(Accelerate, 1f) && accelPressed == false)
         {
@@ -161,6 +207,14 @@ public class ShipDrive : MonoBehaviour
         if (Mathf.Approximately(Accelerate, 0f))
         {
             accelPressed = false;
+            lightOne.SetActive(false);
+            lightTwo.SetActive(false);
+            lightThree.SetActive(false);
+            lightFour.SetActive(false);
+            lightFive.SetActive(false);
+            lightScorpioOne.SetActive(false);
+            lightScorpioTwo.SetActive(false);
+            lightVirgo.SetActive(false);
         }
 
         if (Mathf.Approximately(Decelerate, 1f) && decelPressed == false)

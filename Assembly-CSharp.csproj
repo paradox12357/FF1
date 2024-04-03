@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\FZeroMovement.cs" />
     <Compile Include="Assets\Scripts\WallHitDetection.cs" />
     <Compile Include="Assets\Scripts\RotatingWalls.cs" />
+    <Compile Include="Assets\Scripts\lightBehavior.cs" />
     <Compile Include="Assets\Scripts\SpeedUI.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Teleport.cs" />
