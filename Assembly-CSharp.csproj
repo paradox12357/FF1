@@ -65,6 +65,9 @@
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\FZeroMovement.cs" />
     <Compile Include="Assets\Scripts\WallHitDetection.cs" />
+    <Compile Include="Assets\Scripts\RotateCars.cs" />
+    <Compile Include="Assets\Scripts\RotateC23.cs" />
+    <Compile Include="Assets\Scripts\MenuCarSelect.cs" />
     <Compile Include="Assets\Scripts\RotatingWalls.cs" />
     <Compile Include="Assets\Scripts\SpeedUI.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
