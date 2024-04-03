@@ -31,11 +31,18 @@ public class ShipDrive : MonoBehaviour
     private InputActionAsset inputActions;
 
     private Vector2 moveInput;
+    public static int Players = 0;
+    public int Player = 0;
+    public Cinemachine.CinemachineVirtualCamera cam;
+    [SerializeField] public Camera cam2;
+    
     //private
     //public int onGround = 0;
     // Start is called before the first frame update
     void Start()
     {
+        Players++;
+        Player = Players;
         ff1 = new FF1();
         inputActions = GetComponent<PlayerInput>().actions;
         rb = GetComponent<Rigidbody>();
@@ -47,6 +54,10 @@ public class ShipDrive : MonoBehaviour
         {
             print("BRUH!!!");
         }
+        // set cam to the layer for the player
+        cam.gameObject.layer = Player + 5;
+        cam2.cullingMask |= 1 << (Player + 5);
+        
     }
 
     // Update is called once per frame
