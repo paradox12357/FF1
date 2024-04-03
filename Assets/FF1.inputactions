@@ -61,12 +61,12 @@
                 },
                 {
                     "name": "ItemUse",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "957cf80a-a844-44c6-87a8-d5bd88f3ca92",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Decelerate",
@@ -427,6 +427,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "ItemUse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c81cf863-6fd8-4234-a502-9d3ab9bbb66e",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "ItemUse",
                     "isComposite": false,
                     "isPartOfComposite": false
