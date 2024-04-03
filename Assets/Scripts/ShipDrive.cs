@@ -299,6 +299,7 @@ public class ShipDrive : MonoBehaviour
         if (Mathf.Approximately(ItemUse, 1f) == true)
         {
             currentItem = "None";
+            print("UseItem");
         }
     }
 
