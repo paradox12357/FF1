@@ -57,6 +57,7 @@ public class ShipDrive : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
         //geminiShip = GameObject.Find("/Speedship/Gemini");
         //virgoShip = GameObject.Find("/Speedship/Virgo");
         Players++;
