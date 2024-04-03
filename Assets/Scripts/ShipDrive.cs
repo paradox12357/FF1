@@ -40,9 +40,15 @@ public class ShipDrive : MonoBehaviour
     bool decelPressed;
     bool strafeRightPressed;
     bool strafeLeftPressed;
+    public GameObject geminiShip;
+    public GameObject virgoShip;
+    public GameObject scorpioShip;
+    public int shipSelect;
     // Start is called before the first frame update
     void Start()
     {
+        //geminiShip = GameObject.Find("/Speedship/Gemini");
+        //virgoShip = GameObject.Find("/Speedship/Virgo");
         Players++;
         Player = Players;
         ff1 = new FF1();
@@ -50,12 +56,42 @@ public class ShipDrive : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ff1.Player.Enable();
         inputActions.Enable();
-        shipObj = transform.Find("Gemini");
-        //goingUp = false;
-        if (shipObj == null)
+
+        //Ship Select
+        if(shipSelect == 0)//Gemini
         {
-            print("BRUH!!!");
+            shipObj = transform.Find("Gemini");
+            if (shipObj == null)
+            {
+                print("BRUH!!!");
+            }
+            geminiShip.SetActive(true);
+            gravMult = 100;
+            turnSpeed = 25f;
         }
+        if (shipSelect == 1)//Virgo
+        {
+            shipObj = transform.Find("Virgo");
+            if (shipObj == null)
+            {
+                print("BRUH!!!");
+            }
+            virgoShip.SetActive(true);
+            gravMult = 110;
+            turnSpeed = 22.5f;
+        }
+        if (shipSelect == 2)//Scorpio
+        {
+            shipObj = transform.Find("Scorpio");
+            if (shipObj == null)
+            {
+                print("BRUH!!!");
+            }
+            scorpioShip.SetActive(true);
+            gravMult = 90;
+            turnSpeed = 27.5f;
+        }
+
         // set cam to the layer for the player
         cam.gameObject.layer = Player + 5;
         cam2.cullingMask |= 1 << (Player + 5);

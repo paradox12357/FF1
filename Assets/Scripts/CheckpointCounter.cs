@@ -46,7 +46,7 @@ public class CheckpointCounter : MonoBehaviour
         {
             checkpointNames[checkpointCount] = other.gameObject.name;
             checkpointCount++;
-            FindObjectOfType<SoundEffectPlayer>().Play("checkpointHit");
+            FindObjectOfType<SoundEffectPlayer>().Play("checkpointHit");//Possibly have this pitch upward every time you hit another checkpoint?
             Debug.Log("Checkpoint Count: " + checkpointCount);
             checkpointText.text = "Gates: " + checkpointCount + "/" + maxCheckpoints;
             switch (Player)
