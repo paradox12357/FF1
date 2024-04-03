@@ -83,12 +83,12 @@ public partial class @FF1: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""ItemUse"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""957cf80a-a844-44c6-87a8-d5bd88f3ca92"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Decelerate"",
