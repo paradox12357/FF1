@@ -13,6 +13,7 @@ TagManager:
   - TeleportD
   - TeleportE
   - TeleportF
+  - ItemBox
   layers:
   - Default
   - TransparentFX

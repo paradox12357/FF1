@@ -25,6 +25,7 @@ public class ShipDrive : MonoBehaviour
     //private float bufferCheckDistance = 0.1f;
     //public Vector3 forwardDirection = Vector3.forward;
     public CheckpointCounter checkpointCounter;
+    public string currentItem = "None";
 
     private FF1 ff1;
     private InputActionAsset inputActions;
@@ -279,6 +280,12 @@ public class ShipDrive : MonoBehaviour
             rb.AddForce(Vector3.down * 15);
         }
     }
+
+    void useItem()
+    {
+        this.currentItem = "None";
+    }
+
     private void OnCollisionEnter(Collision col)
     {
         //grounded = true;
