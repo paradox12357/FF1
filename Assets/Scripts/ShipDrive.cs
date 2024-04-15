@@ -35,12 +35,32 @@ public class ShipDrive : MonoBehaviour
     public int Player = 0;
     public Cinemachine.CinemachineVirtualCamera cam;
     [SerializeField] public Camera cam2;
-    
-    //private
-    //public int onGround = 0;
+
+    //Sound stuff
+    bool accelPressed;
+    bool decelPressed;
+    bool strafeRightPressed;
+    bool strafeLeftPressed;
+    public GameObject geminiShip;
+    public GameObject virgoShip;
+    public GameObject scorpioShip;
+    public int shipSelect;
+
+    //Ship Engine Effect Stuff
+    public GameObject lightFive;
+    public GameObject lightFour;
+    public GameObject lightThree;
+    public GameObject lightTwo;
+    public GameObject lightOne;
+    public GameObject lightScorpioOne;
+    public GameObject lightScorpioTwo;
+    public GameObject lightVirgo;
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
+        //geminiShip = GameObject.Find("/Speedship/Gemini");
+        //virgoShip = GameObject.Find("/Speedship/Virgo");
         Players++;
         Player = Players;
         ff1 = new FF1();
@@ -48,16 +68,58 @@ public class ShipDrive : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ff1.Player.Enable();
         inputActions.Enable();
-        shipObj = transform.Find("Gemini");
-        //goingUp = false;
-        if (shipObj == null)
+        // temp ship select
+        shipSelect = Player - 1;
+        if (shipSelect > 2)
         {
-            print("BRUH!!!");
+            shipSelect = 0;
         }
+
+        //Ship Select
+        if(shipSelect == 0)//Gemini
+        {
+            shipObj = transform.Find("Gemini");
+            if (shipObj == null)
+            {
+                print("BRUH!!!");
+            }
+            geminiShip.SetActive(true);
+            gravMult = 100;
+            turnSpeed = 25f;
+            /*lightFive = GameObject.Find("geminiLightFive");
+            lightFour = GameObject.Find("geminiLightFour");
+            lightThree = GameObject.Find("geminiLightThree");
+            lightTwo = GameObject.Find("geminiLightTwo");
+            lightOne = GameObject.Find("geminiLightOne");*/
+        }
+        if (shipSelect == 1)//Virgo
+        {
+            shipObj = transform.Find("Virgo");
+            if (shipObj == null)
+            {
+                print("BRUH!!!");
+            }
+            virgoShip.SetActive(true);
+            gravMult = 110;
+            turnSpeed = 22.5f;
+        }
+        if (shipSelect == 2)//Scorpio
+        {
+            shipObj = transform.Find("Scorpio");
+            if (shipObj == null)
+            {
+                print("BRUH!!!");
+            }
+            scorpioShip.SetActive(true);
+            gravMult = 90;
+            turnSpeed = 27.5f;
+        }
+
         // set cam to the layer for the player
         cam.gameObject.layer = Player + 5;
         cam2.cullingMask |= 1 << (Player + 5);
-        
+
+
     }
 
     // Update is called once per frame
@@ -112,6 +174,87 @@ public class ShipDrive : MonoBehaviour
         moveInput = inputActions["Move"].ReadValue<Vector2>();
         var Accelerate = inputActions["Accelerate"].ReadValue<float>();
         var Decelerate = inputActions["Decelerate"].ReadValue<float>();
+        var StrafeRight = inputActions["StrafeRight"].ReadValue<float>();
+        var StrafeLeft = inputActions["StrafeLeft"].ReadValue<float>();
+
+        //Engine Fire
+        if (Mathf.Approximately(Accelerate, 1f) && shipSelect == 0 && accelPressed == false)
+        {
+            
+            lightOne.SetActive(true);
+            
+            lightTwo.SetActive(true);
+            
+            lightThree.SetActive(true);
+            
+            lightFour.SetActive(true);
+            
+            lightFive.SetActive(true);
+            
+        }
+
+        if (Mathf.Approximately(Accelerate, 1f) && shipSelect == 2 && accelPressed == false)
+        {
+
+            lightScorpioOne.SetActive(true);
+            lightScorpioTwo.SetActive(true);    
+
+        }
+
+        if (Mathf.Approximately(Accelerate, 1f) && shipSelect == 1 && accelPressed == false)
+        {
+
+            lightVirgo.SetActive(true);
+
+        }
+        //Sound Effects for Accelerating/Decelerating/Strafing
+        if (Mathf.Approximately(Accelerate, 1f) && accelPressed == false)
+        {
+            FindObjectOfType<SoundEffectPlayer>().Play("engineStart");
+            accelPressed = true;
+        }
+        if (Mathf.Approximately(Accelerate, 0f))
+        {
+            accelPressed = false;
+            lightOne.SetActive(false);
+            lightTwo.SetActive(false);
+            lightThree.SetActive(false);
+            lightFour.SetActive(false);
+            lightFive.SetActive(false);
+            lightScorpioOne.SetActive(false);
+            lightScorpioTwo.SetActive(false);
+            lightVirgo.SetActive(false);
+        }
+
+        if (Mathf.Approximately(Decelerate, 1f) && decelPressed == false)
+        {
+            FindObjectOfType<SoundEffectPlayer>().Play("brake");
+            decelPressed = true;
+        }
+        if (Mathf.Approximately(Decelerate, 0f))
+        {
+            decelPressed = false;
+        }
+
+        if (Mathf.Approximately(StrafeRight, 1f) && strafeRightPressed == false)
+        {
+            FindObjectOfType<SoundEffectPlayer>().Play("strafeRight");
+            strafeRightPressed = true;
+        }
+        if (Mathf.Approximately(StrafeRight, 0f))
+        {
+            strafeRightPressed = false;
+        }
+
+        if (Mathf.Approximately(StrafeLeft, 1f) && strafeLeftPressed == false)
+        {
+            FindObjectOfType<SoundEffectPlayer>().Play("strafeLeft");
+            strafeLeftPressed = true;
+        }
+        if (Mathf.Approximately(StrafeLeft, 0f))
+        {
+            strafeLeftPressed = false;
+        }
         //print("Move Input: " + moveInput.x + " " + moveInput.y);
         if (/*(UnityEngine.Input.GetKey(KeyCode.W) || */ /*ff1.Player.Accelerate.IsPressed()*/ Mathf.Approximately(Accelerate, 1f) && grounded == true)
         {
@@ -170,8 +313,7 @@ public class ShipDrive : MonoBehaviour
         Vector3 localVel = transform.InverseTransformDirection(rb.velocity);
         localVel.x = 0;
         rb.velocity = transform.TransformDirection(localVel);
-        var StrafeRight = inputActions["StrafeRight"].ReadValue<float>();
-        var StrafeLeft = inputActions["StrafeLeft"].ReadValue<float>();
+        
 
         if (/*(UnityEngine.Input.GetKey(KeyCode.R) ||*/ Mathf.Approximately(StrafeRight, 1f)/*(UnityEngine.Input.GetKey(KeyCode.W) ||*/)//Strafing Right
         {
@@ -318,7 +460,22 @@ public class ShipDrive : MonoBehaviour
             //print("Normal of Col = " + col.contacts[0].normal);
             //Vector3 reflectionDirection = Vector3.Reflect(rb.velocity, col.GetContact(0).normal);
             //Vector3 reflectionDirection = Vector3.Reflect(rb.velocity, );
+
             rb.velocity = reflectionDirection;
+            //Sound Effects for hitting walls
+            int rand = Random.Range(0, 2);
+            if (rand == 0)
+            {
+                FindObjectOfType<SoundEffectPlayer>().Play("wallhitOne");
+            }
+            if (rand == 1)
+            {
+                FindObjectOfType<SoundEffectPlayer>().Play("wallhitTwo");
+            }
+            if (rand == 2)
+            {
+                FindObjectOfType<SoundEffectPlayer>().Play("wallhitThree");
+            }
             //Destroy(col.gameObject);
 
             //rb.AddForce(Vector3.Reflect(rb.velocity.normalized, col.contacts[0].normal));
