@@ -7,12 +7,15 @@ public class ItemBox : MonoBehaviour
 
     private string[] itemList = { "Boost Rocket", "Gun", "Rocket", "Grapple Hook", "Speedboost", "Phantom", "Obliterator" };
     int randomItem;
+    private BoxCollider boxCollider;
+    private MeshRenderer mesh;
 
     // Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
+    void Start()
+    {
+        boxCollider = GetComponent<BoxCollider>();
+        mesh = GetComponent<MeshRenderer>();
+    }
 
     // Update is called once per frame
     //void Update()
@@ -27,6 +30,19 @@ public class ItemBox : MonoBehaviour
             if (collision.gameObject.GetComponent<ShipDrive>().currentItem.Equals("None"))
             {
                 randomItem = UnityEngine.Random.Range(0, 100);
+                if(randomItem >= 0 && randomItem < 34)
+                {
+                    collision.gameObject.GetComponent<ShipDrive>().currentItem = itemList[0];
+                }
+                else if (randomItem >= 34 && randomItem < 67)
+                {
+                    collision.gameObject.GetComponent<ShipDrive>().currentItem = itemList[2];
+                }
+                else if (randomItem >= 67 && randomItem < 100)
+                {
+                    collision.gameObject.GetComponent<ShipDrive>().currentItem = itemList[4];
+                }
+                /*
                 if (randomItem >= 0 && randomItem < 16)
                 {
                     collision.gameObject.GetComponent<ShipDrive>().currentItem = itemList[0];
@@ -55,7 +71,10 @@ public class ItemBox : MonoBehaviour
                 {
                     collision.gameObject.GetComponent<ShipDrive>().currentItem = itemList[6];
                 }
-                //Destroy(this.gameObject);
+                */
+
+                //boxCollider.enabled = !boxCollider.enabled;
+                //mesh.enabled = !mesh.enabled;
             }
         }
     }

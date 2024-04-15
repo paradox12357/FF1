@@ -55,7 +55,6 @@
     <UnityVersion>2022.3.19f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.19f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.19f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -68,6 +67,7 @@
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\FZeroMovement.cs" />
     <Compile Include="Assets\Scripts\WallHitDetection.cs" />
+    <Compile Include="Assets\Scripts\ItemBox.cs" />
     <Compile Include="Assets\Scripts\RotatingWalls.cs" />
     <Compile Include="Assets\Scripts\lightBehavior.cs" />
     <Compile Include="Assets\Scripts\SpeedUI.cs" />
