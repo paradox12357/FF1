@@ -27284,6 +27284,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3530729271598227122, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530729271598227122, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 255
+      objectReference: {fileID: 0}
     - target: {fileID: 3694535578566539377, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
       propertyPath: m_IsActive
@@ -27314,6 +27324,11 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 55
       objectReference: {fileID: 0}
+    - target: {fileID: 5979107623674861750, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6348283647710221894, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
       propertyPath: m_Lens.FarClipPlane
@@ -27338,6 +27353,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.040497847
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179659811902634376, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 411
       objectReference: {fileID: 0}
     - target: {fileID: 7585789182472443855, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
