@@ -11,8 +11,8 @@ public class CheckpointCounter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        checkpointNames = new String[maxCheckpoints];
-        checkpointText.text = "Gates: 0/" + maxCheckpoints;
+        checkpointNames = new String[maxScore];
+        checkpointText.text = "Score: 0/" + maxScore;
         image.enabled = false;
         Players++;
         Player = Players;
@@ -24,9 +24,9 @@ public class CheckpointCounter : MonoBehaviour
 
     }
     public static int winners = 0;
-    public int checkpointCount = 0;
+    public int scoreCount = 0;
     public bool hasFinished = false;
-    public int maxCheckpoints = 3;
+    public int maxScore = 10000;
     public String[] checkpointNames;
     public TextMeshProUGUI checkpointText;
     public TextMeshProUGUI Victory;
@@ -42,13 +42,13 @@ public class CheckpointCounter : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject.name);
-        if (other.gameObject.tag == "Checkpoint" && checkpointCount <= maxCheckpoints && !checkpointNames.Contains(other.gameObject.name))
+        if (other.gameObject.tag == "Checkpoint" && scoreCount <= maxScore && !checkpointNames.Contains(other.gameObject.name))
         {
-            checkpointNames[checkpointCount] = other.gameObject.name;
-            checkpointCount++;
+            checkpointNames[scoreCount] = other.gameObject.name;
+            scoreCount += 1000;
             FindObjectOfType<SoundEffectPlayer>().Play("checkpointHit");//Possibly have this pitch upward every time you hit another checkpoint?
-            Debug.Log("Checkpoint Count: " + checkpointCount);
-            checkpointText.text = "Gates: " + checkpointCount + "/" + maxCheckpoints;
+            Debug.Log("Score: " + scoreCount);
+            checkpointText.text = "Score: " + scoreCount + "/" + maxScore;
             switch (Player)
             {
                 case 1:
@@ -65,7 +65,7 @@ public class CheckpointCounter : MonoBehaviour
                     break;
             }
         }
-        if (other.gameObject.tag == "Finish" && checkpointCount >= maxCheckpoints)
+        if (other.gameObject.tag == "Finish" && scoreCount >= maxScore)
         {
             hasFinished = true;
             Debug.Log("You have reached the finish line!");
