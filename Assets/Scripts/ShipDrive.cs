@@ -62,8 +62,10 @@ public class ShipDrive : MonoBehaviour
     GameObject rocketClone;
     public GameObject rocketHoming;
     GameObject rocketHomingClone;
-    [SerializeField] private Transform rocketPf;
-    int changingRot = 0;
+    //[SerializeField] private Transform rocketPf;
+    public Transform itemSpawnPoint;
+    bool itemUsed;
+    //int changingRot = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,6 +79,7 @@ public class ShipDrive : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ff1.Player.Enable();
         inputActions.Enable();
+        itemUsed = false;
         // temp ship select
         shipSelect = Player - 1;
         if (shipSelect > 2)
@@ -447,18 +450,29 @@ public class ShipDrive : MonoBehaviour
     void useItem()
     {   
         var ItemUse = inputActions["ItemUse"].ReadValue<float>();
-        if (Mathf.Approximately(ItemUse, 1f) == true)
+        if (Mathf.Approximately(ItemUse, 1f) == true && itemUsed == false)
         {
+            itemUsed = true;
             currentItem = "None";
-            changingRot++;
+            var itemShot = Instantiate(rocket, itemSpawnPoint.position, itemSpawnPoint.rotation);
+            //var itemShot = Instantiate(rocket, itemSpawnPoint.position, Quaternion.identity);
+            
+            itemShot.GetComponent<Rigidbody>().velocity = itemSpawnPoint.forward * 100;
+            //changingRot++;
             //print("Rotation z: " + rb.transform.rotation.z);
-            rocketClone = Instantiate(rocket, new Vector3(rb.transform.position.x, rb.transform.position.y, rb.transform.position.z), new Quaternion(rocket.transform.rotation.x, rocket.transform.rotation.y, rocket.transform.rotation.z, 1)) as GameObject;//new Quaternion(rb.rotation.x, rb.rotation.y, rb.rotation.z, 1)
+            //rocketClone = Instantiate(rocket, new Vector3(rb.transform.position.x, rb.transform.position.y, rb.transform.position.z), new Quaternion(rocket.transform.rotation.x, rocket.transform.rotation.y, rocket.transform.rotation.z, 1)) as GameObject;//new Quaternion(rb.rotation.x, rb.rotation.y, rb.rotation.z, 1)
             //rocketClone: Transform = Instantiate(rocket, transform.position, transform.rotation);
-            rocketClone.transform.Rotate(0, 0, -90);
+            //rocketClone.transform.Rotate(0, 0, -90);
             //Instantiate(rocket, rb.transform.position, Quaternion.identity);
             //rocketClone.transform.Rotate(rb.transform.forward);
             print("UseItem");
         }
+        if (Mathf.Approximately(ItemUse, 0f) == true && itemUsed == true)
+        {
+            itemUsed = false;
+            print("UseItem");
+        }
+
     }
 
     private void OnCollisionEnter(Collision col)
