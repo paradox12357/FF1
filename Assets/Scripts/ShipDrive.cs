@@ -457,7 +457,7 @@ public class ShipDrive : MonoBehaviour
             var itemShot = Instantiate(rocket, itemSpawnPoint.position, itemSpawnPoint.rotation);
             //var itemShot = Instantiate(rocket, itemSpawnPoint.position, Quaternion.identity);
             
-            itemShot.GetComponent<Rigidbody>().velocity = itemSpawnPoint.forward * 100;
+            itemShot.GetComponent<Rigidbody>().velocity = (rb.transform.forward * 15) + 2 * rb.velocity;//itemSpawnPoint.forward * 10 
             //changingRot++;
             //print("Rotation z: " + rb.transform.rotation.z);
             //rocketClone = Instantiate(rocket, new Vector3(rb.transform.position.x, rb.transform.position.y, rb.transform.position.z), new Quaternion(rocket.transform.rotation.x, rocket.transform.rotation.y, rocket.transform.rotation.z, 1)) as GameObject;//new Quaternion(rb.rotation.x, rb.rotation.y, rb.rotation.z, 1)
