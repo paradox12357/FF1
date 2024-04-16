@@ -27277,6 +27277,12 @@ PrefabInstance:
       objectReference: {fileID: 250314427}
     - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
+      propertyPath: rocket
+      value: 
+      objectReference: {fileID: 7438785044383658734, guid: 378086cd5fe1c8b44a266a86d0166a76,
+        type: 3}
+    - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
       propertyPath: lightOne
       value: 
       objectReference: {fileID: 1032954078}
@@ -27285,6 +27291,12 @@ PrefabInstance:
       propertyPath: lightTwo
       value: 
       objectReference: {fileID: 810817184}
+    - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: rocketPf
+      value: 
+      objectReference: {fileID: 7813762092993456212, guid: 378086cd5fe1c8b44a266a86d0166a76,
+        type: 3}
     - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
       propertyPath: lightFive
@@ -27325,6 +27337,12 @@ PrefabInstance:
       propertyPath: scorpioShip
       value: 
       objectReference: {fileID: 164399759}
+    - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: rocketHoming
+      value: 
+      objectReference: {fileID: 7363514360567520781, guid: 620d7974eb56eac4f93e4c141878a3d7,
+        type: 3}
     - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
       propertyPath: lightScorpioOne

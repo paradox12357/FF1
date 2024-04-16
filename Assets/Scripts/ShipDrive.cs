@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Windows;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
+using JetBrains.Annotations;
 //ADDING A DRIFT MECHANIC WOULD MAKE TURNS MUCH MUCH EASIER TO PREPARE FOR AND INCREASE GAME DEPTH
 public class ShipDrive : MonoBehaviour
 {
@@ -55,6 +56,14 @@ public class ShipDrive : MonoBehaviour
     public GameObject lightScorpioOne;
     public GameObject lightScorpioTwo;
     public GameObject lightVirgo;
+
+    //Item Stuff
+    public GameObject rocket;
+    GameObject rocketClone;
+    public GameObject rocketHoming;
+    GameObject rocketHomingClone;
+    [SerializeField] private Transform rocketPf;
+    int changingRot = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -436,11 +445,18 @@ public class ShipDrive : MonoBehaviour
     }
 
     void useItem()
-    {
+    {   
         var ItemUse = inputActions["ItemUse"].ReadValue<float>();
         if (Mathf.Approximately(ItemUse, 1f) == true)
         {
             currentItem = "None";
+            changingRot++;
+            //print("Rotation z: " + rb.transform.rotation.z);
+            rocketClone = Instantiate(rocket, new Vector3(rb.transform.position.x, rb.transform.position.y, rb.transform.position.z), new Quaternion(rocket.transform.rotation.x, rocket.transform.rotation.y, rocket.transform.rotation.z, 1)) as GameObject;//new Quaternion(rb.rotation.x, rb.rotation.y, rb.rotation.z, 1)
+            //rocketClone: Transform = Instantiate(rocket, transform.position, transform.rotation);
+            rocketClone.transform.Rotate(0, 0, -90);
+            //Instantiate(rocket, rb.transform.position, Quaternion.identity);
+            //rocketClone.transform.Rotate(rb.transform.forward);
             print("UseItem");
         }
     }
