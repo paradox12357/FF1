@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 using JetBrains.Annotations;
@@ -27,6 +28,7 @@ public class ShipDrive : MonoBehaviour
     //public Vector3 forwardDirection = Vector3.forward;
     public CheckpointCounter checkpointCounter;
     public string currentItem = "None";
+    public Image itemImage;
 
     private FF1 ff1;
     private InputActionAsset inputActions;
@@ -454,6 +456,7 @@ public class ShipDrive : MonoBehaviour
         {
             itemUsed = true;
             currentItem = "None";
+            itemImage.sprite = null;
             var itemShot = Instantiate(rocket, itemSpawnPoint.position, itemSpawnPoint.rotation);
             //var itemShot = Instantiate(rocket, itemSpawnPoint.position, Quaternion.identity);
             
