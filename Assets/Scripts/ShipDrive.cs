@@ -160,6 +160,11 @@ public class ShipDrive : MonoBehaviour
         }
         Fall();
         Oscillate();
+        if(HP <= 0)
+        {
+            print("R I P");
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -275,17 +280,18 @@ public class ShipDrive : MonoBehaviour
         if (/*(UnityEngine.Input.GetKey(KeyCode.W) || */ /*ff1.Player.Accelerate.IsPressed()*/ Mathf.Approximately(Accelerate, 1f) && grounded == true)
         {
             rb.AddRelativeForce(new Vector3(0, 0, 100));
-            forward = true;
+            //forward = true;
+            //rb.drag += 1; 
             //print("Velocity: " + rb.velocity.magnitude);
         }
         else if (/*(UnityEngine.Input.GetKey(KeyCode.S) ||*/ Mathf.Approximately(Decelerate, 1f) && (grounded == true))
         {
             rb.AddRelativeForce(new Vector3(0, 0, -80));
-            forward = false;
+            //forward = false;
             //print("Velocity: -" + rb.velocity.magnitude);
         }
 
-        if (rb.velocity.magnitude > 0 && forward == true)//Gradually Slow the Speedship down (when it's going forwards)
+        /*if (rb.velocity.magnitude > 0 && forward == true)//Gradually Slow the Speedship down (when it's going forwards)
         {
             if (rb.velocity.magnitude > 75)
             {
@@ -305,16 +311,18 @@ public class ShipDrive : MonoBehaviour
                 shipObj.localPosition = new Vector3(shipObj.localPosition.x, shipObj.localPosition.y + 0.01f, shipObj.localPosition.z);
             }
 
-        }
+        }*/
         if (rb.velocity.magnitude > 0 && forward == false)//Gradually Slow the Speedship down (when it's going backwards)
         {
-            if (rb.velocity.magnitude > 25)
+            if (rb.velocity.magnitude > 50)
             {
-                rb.AddRelativeForce(new Vector3(0, 0, 0.8f * rb.velocity.magnitude));
+                //rb.AddRelativeForce(new Vector3(0, 0, 0.8f * rb.velocity.magnitude));
+                rb.drag = 0.8f;
             }
             else
             {
-                rb.AddRelativeForce(new Vector3(0, 0, 0.5f * rb.velocity.magnitude));
+                //rb.AddRelativeForce(new Vector3(0, 0, 0.5f * rb.velocity.magnitude));
+                rb.drag = 0.1f;
             }
             if (shipObj.localPosition.y > 1.25f)
             {
@@ -516,10 +524,15 @@ public class ShipDrive : MonoBehaviour
             //rb.AddForce(Vector3.Reflect(rb.velocity.normalized, col.contacts[0].normal));
 
         }
-        if (col.gameObject.name.Contains("Cylinder"))
+        /*if (col.gameObject.tag == "rocket")
         {
-            //print("CYLINDERHIT!!");
-        }
+            print("HIT BY ROCKET!!!");
+            HP = HP - 20;
+            if(HP <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }*/
         //if (col.gameObject.name.Contains("Wall"))
         //{
         //    print("HIT WALL LOLOLOLOL!!");

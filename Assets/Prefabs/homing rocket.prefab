@@ -679,12 +679,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c2e775e8664315a40988bb42a75d1599,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2e775e8664315a40988bb42a75d1599,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2e775e8664315a40988bb42a75d1599,
         type: 3}
@@ -699,7 +699,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c2e775e8664315a40988bb42a75d1599,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2e775e8664315a40988bb42a75d1599,
         type: 3}
@@ -730,6 +730,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: homing rocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2e775e8664315a40988bb42a75d1599,
+        type: 3}
+      propertyPath: m_TagString
+      value: rocketHoming
       objectReference: {fileID: 0}
     - target: {fileID: 1129496810705857465, guid: c2e775e8664315a40988bb42a75d1599,
         type: 3}
