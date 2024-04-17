@@ -59,9 +59,10 @@ public class ShipDrive : MonoBehaviour
 
     //Item Stuff
     public GameObject rocket;
-    GameObject rocketClone;
+    //GameObject rocketClone;
     public GameObject rocketHoming;
-    GameObject rocketHomingClone;
+    //GameObject rocketHomingClone;
+    public int HP;
     //[SerializeField] private Transform rocketPf;
     public Transform itemSpawnPoint;
     bool itemUsed;
@@ -69,6 +70,7 @@ public class ShipDrive : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        HP = 100;
         Cursor.visible = false;
         //geminiShip = GameObject.Find("/Speedship/Gemini");
         //virgoShip = GameObject.Find("/Speedship/Virgo");

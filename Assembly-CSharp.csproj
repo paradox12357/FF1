@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\EnemyMoveBasic.cs" />
     <Compile Include="Assets\Scripts\Sound.cs" />
     <Compile Include="Assets\Scripts\camFollowTwo.cs" />
+    <Compile Include="Assets\Scripts\rocketWallHit.cs" />
     <Compile Include="Assets\Scripts\rocketMoveScript.cs" />
   </ItemGroup>
   <ItemGroup>
