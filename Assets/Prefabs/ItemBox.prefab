@@ -118,3 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1090014585a9114780bd0b9d80c9c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rocketSprite: {fileID: 21300000, guid: 66512d95377bb6647b4e5b185333c329, type: 3}
+  hRocketSprite: {fileID: 21300000, guid: 0ffacb255a1c1ee4d908ddca691d3b6a, type: 3}
+  boostSprite: {fileID: 21300000, guid: d2adc4429647fe0408c5d18a6fe1a9c4, type: 3}

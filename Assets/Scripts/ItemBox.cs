@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemBox : MonoBehaviour
 {
 
     private string[] itemList = { "Boost Rocket", "Gun", "Rocket", "Grapple Hook", "Speedboost", "Phantom", "Obliterator" };
-    int randomItem;
+    private int randomItem;
     private BoxCollider boxCollider;
     private MeshRenderer mesh;
+    public Sprite rocketSprite;
+    public Sprite hRocketSprite;
+    public Sprite boostSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -33,14 +37,17 @@ public class ItemBox : MonoBehaviour
                 if(randomItem >= 0 && randomItem < 34)
                 {
                     collision.gameObject.GetComponent<ShipDrive>().currentItem = itemList[0];
+                    collision.gameObject.GetComponent<ShipDrive>().itemImage.sprite = hRocketSprite;
                 }
                 else if (randomItem >= 34 && randomItem < 67)
                 {
                     collision.gameObject.GetComponent<ShipDrive>().currentItem = itemList[2];
+                    collision.gameObject.GetComponent<ShipDrive>().itemImage.sprite = rocketSprite;
                 }
                 else if (randomItem >= 67 && randomItem < 100)
                 {
                     collision.gameObject.GetComponent<ShipDrive>().currentItem = itemList[4];
+                    collision.gameObject.GetComponent<ShipDrive>().itemImage.sprite = boostSprite;
                 }
                 /*
                 if (randomItem >= 0 && randomItem < 16)
