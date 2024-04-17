@@ -489,19 +489,28 @@ public class ShipDrive : MonoBehaviour
         if (Mathf.Approximately(ItemUse, 1f) == true && itemUsed == false)
         {
             itemUsed = true;
-            currentItem = "None";
+            if (currentItem.Equals("rocket"))
+            {
+                var itemShot = Instantiate(rocket, itemSpawnPoint.position, itemSpawnPoint.rotation);
+                rocketWallHit rwh = itemShot.GetComponent<rocketWallHit>();
+                rwh.setShotOwner(gameObject);
+                itemShot.GetComponent<Rigidbody>().velocity = (rb.transform.forward * 15) + 2 * rb.velocity;
+            }
+            if (currentItem.Equals("rocketHoming"))
+            {
+                var itemShot = Instantiate(rocketHoming, itemSpawnPoint.position, itemSpawnPoint.rotation);
+                rocketWallHit rwh = itemShot.GetComponent<rocketWallHit>();
+                rwh.setShotOwner(gameObject);
+                itemShot.GetComponent<Rigidbody>().velocity = (rb.transform.forward * 15) + 3 * rb.velocity;
+            }
+            if (currentItem.Equals("boost"))
+            {
+                rb.AddRelativeForce(new Vector3(0, 0, 4000));
+            }
             itemImage.sprite = null;
-            var itemShot = Instantiate(rocket, itemSpawnPoint.position, itemSpawnPoint.rotation);
-            //var itemShot = Instantiate(rocket, itemSpawnPoint.position, Quaternion.identity);
+            currentItem = "None";
             
-            itemShot.GetComponent<Rigidbody>().velocity = (rb.transform.forward * 15) + 2 * rb.velocity;//itemSpawnPoint.forward * 10 
-            //changingRot++;
-            //print("Rotation z: " + rb.transform.rotation.z);
-            //rocketClone = Instantiate(rocket, new Vector3(rb.transform.position.x, rb.transform.position.y, rb.transform.position.z), new Quaternion(rocket.transform.rotation.x, rocket.transform.rotation.y, rocket.transform.rotation.z, 1)) as GameObject;//new Quaternion(rb.rotation.x, rb.rotation.y, rb.rotation.z, 1)
-            //rocketClone: Transform = Instantiate(rocket, transform.position, transform.rotation);
-            //rocketClone.transform.Rotate(0, 0, -90);
-            //Instantiate(rocket, rb.transform.position, Quaternion.identity);
-            //rocketClone.transform.Rotate(rb.transform.forward);
+//itemSpawnPoint.forward * 10 
             print("UseItem");
         }
         if (Mathf.Approximately(ItemUse, 0f) == true && itemUsed == true)

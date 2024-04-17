@@ -100,5 +100,9 @@ public class CheckpointCounter : MonoBehaviour
 
         }
     }
+    public void updateCheckpoint()
+    {
+        checkpointText.text = "Score: " + scoreCount + "/" + maxScore;
+    }
 }
 

@@ -38,16 +38,19 @@ public class ItemBox : MonoBehaviour
                 {
                     collision.gameObject.GetComponent<ShipDrive>().currentItem = itemList[0];
                     collision.gameObject.GetComponent<ShipDrive>().itemImage.sprite = hRocketSprite;
+                    collision.gameObject.GetComponent<ShipDrive>().currentItem = "rocketHoming";
                 }
                 else if (randomItem >= 34 && randomItem < 67)
                 {
                     collision.gameObject.GetComponent<ShipDrive>().currentItem = itemList[2];
                     collision.gameObject.GetComponent<ShipDrive>().itemImage.sprite = rocketSprite;
+                    collision.gameObject.GetComponent<ShipDrive>().currentItem = "rocket";
                 }
                 else if (randomItem >= 67 && randomItem < 100)
                 {
                     collision.gameObject.GetComponent<ShipDrive>().currentItem = itemList[4];
                     collision.gameObject.GetComponent<ShipDrive>().itemImage.sprite = boostSprite;
+                    collision.gameObject.GetComponent<ShipDrive>().currentItem = "boost";
                 }
                 /*
                 if (randomItem >= 0 && randomItem < 16)
