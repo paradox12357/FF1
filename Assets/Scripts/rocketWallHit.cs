@@ -24,6 +24,9 @@ public class rocketWallHit : MonoBehaviour
                 {
                     HealthModifier.HP -= 50;
                 }
+                CheckpointCounter CPC = shotOwner.GetComponent<CheckpointCounter>();
+                CPC.scoreCount += 500;
+                CPC.updateCheckpoint();
                 Destroy(gameObject);
             }
             

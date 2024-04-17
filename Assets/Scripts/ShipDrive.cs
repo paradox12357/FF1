@@ -73,10 +73,12 @@ public class ShipDrive : MonoBehaviour
     //[SerializeField] private Transform rocketPf;
     public Transform itemSpawnPoint;
     bool itemUsed;
+    //Transform spawnPoint;
     //int changingRot = 0;
     // Start is called before the first frame update
     void Start()
     {
+        //spawnPoint = rb.transform;
         HP = 100;
         Cursor.visible = false;
         //geminiShip = GameObject.Find("/Speedship/Gemini");
@@ -187,7 +189,9 @@ public class ShipDrive : MonoBehaviour
         if(HP <= 0)
         {
             print("R I P");
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            transform.position = new Vector3(0, 0, 0);
+            HP = 100;
         }
     }
 
