@@ -38,6 +38,7 @@ public class ShipDrive : MonoBehaviour
     public int Player = 0;
     public Cinemachine.CinemachineVirtualCamera cam;
     [SerializeField] public Camera cam2;
+    [SerializeField] public Camera minimapCam;
 
     //Sound stuff
     bool accelPressed;
@@ -58,6 +59,10 @@ public class ShipDrive : MonoBehaviour
     public GameObject lightScorpioOne;
     public GameObject lightScorpioTwo;
     public GameObject lightVirgo;
+    public GameObject sphere1;
+    public GameObject sphere2;
+    public GameObject sphere3;
+    public GameObject sphere4;
 
     //Item Stuff
     public GameObject rocket;
@@ -87,6 +92,25 @@ public class ShipDrive : MonoBehaviour
         if (shipSelect > 2)
         {
             shipSelect = 0;
+        }
+        switch (Player)
+        {
+            case 1:
+                minimapCam.rect = new Rect(0.7f, 0, 0.3f, 0.3f);
+                sphere1.SetActive(true);
+                break;
+            case 2:
+                minimapCam.rect = new Rect(0.4f, 0, 0.2f, 0.2f);
+                sphere2.SetActive(true);
+                break;
+            case 3:
+                minimapCam.rect = new Rect(0.5f, 0, 0.5f, 0.5f);
+                sphere3.SetActive(true);
+                break;
+            default:
+                minimapCam.rect = new Rect(0.35f, 0.35f, 0.3f, 0.3f);
+                sphere4.SetActive(true);
+                break;
         }
 
         //Ship Select
