@@ -60,21 +60,33 @@
     <Analyzer Include="D:\UnityHub\2022.3.19f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BlinkingText.cs" />
     <Compile Include="Assets\Scripts\ScoreUI.cs" />
     <Compile Include="Assets\Scripts\CheckpointCounter.cs" />
+    <Compile Include="Assets\Scripts\OptionToStart.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\GoOptions.cs" />
     <Compile Include="Assets\Scripts\FZeroMovement.cs" />
+    <Compile Include="Assets\Scripts\MenuTransition.cs" />
+    <Compile Include="Assets\Scripts\LevelLoader.cs" />
+    <Compile Include="Assets\Scripts\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\StatUI.cs" />
+    <Compile Include="Assets\Scripts\ShipNameUI.cs" />
     <Compile Include="Assets\Scripts\WallHitDetection.cs" />
     <Compile Include="Assets\Scripts\RotateCars.cs" />
     <Compile Include="Assets\Scripts\RotateC23.cs" />
     <Compile Include="Assets\Scripts\MenuCarSelect.cs" />
+    <Compile Include="Assets\Scripts\DoNotDestroy.cs" />
     <Compile Include="Assets\Scripts\RotatingWalls.cs" />
+    <Compile Include="Assets\Scripts\MoveText.cs" />
     <Compile Include="Assets\Scripts\SpeedUI.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Teleport.cs" />
     <Compile Include="Assets\Scripts\MovingWalls.cs" />
     <Compile Include="Assets\Scripts\ShipDrive.cs" />
+    <Compile Include="Assets\Scripts\ButtonAnimation.cs" />
     <Compile Include="Assets\Scripts\FF1.cs" />
+    <Compile Include="Assets\Scripts\PauseMusic.cs" />
     <Compile Include="Assets\Scripts\camFollowTwo.cs" />
   </ItemGroup>
   <ItemGroup>
