@@ -13,18 +13,21 @@ TagManager:
   - TeleportD
   - TeleportE
   - TeleportF
-  - GameMusic
+  - ItemBox
+  - rocket
+  - rocketHoming
+  - enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Minimap
   - Water
   - UI
-  - MainUI
-  - Other UI
-  - 
-  - 
+  - Player1
+  - Player2
+  - Player3
+  - Player4
   - 
   - 
   - 

@@ -11,9 +11,11 @@ public class CheckpointCounter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        checkpointNames = new String[maxCheckpoints];
-        checkpointText.text = "Gates: 0/" + maxCheckpoints;
+        checkpointNames = new String[maxScore];
+        checkpointText.text = "Score: 0/" + maxScore;
         image.enabled = false;
+        Players++;
+        Player = Players;
     }
 
     // Update is called once per frame
@@ -22,27 +24,48 @@ public class CheckpointCounter : MonoBehaviour
 
     }
     public static int winners = 0;
-    public int checkpointCount = 0;
+    public int scoreCount = 0;
     public bool hasFinished = false;
-    public int maxCheckpoints = 3;
+    public int maxScore = 10000;
     public String[] checkpointNames;
     public TextMeshProUGUI checkpointText;
     public TextMeshProUGUI Victory;
     public Image image;
     public TextMeshProUGUI score;
     public TextMeshProUGUI speed;
+    public static int Players = 0;
+    public int Player = 0;
+    public GameObject playermesh;
+    [SerializeField] public Camera cam;
+    
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject.name);
-        if (other.gameObject.tag == "Checkpoint" && checkpointCount < maxCheckpoints && !checkpointNames.Contains(other.gameObject.name))
+        if (other.gameObject.tag == "Checkpoint" && scoreCount <= maxScore && !checkpointNames.Contains(other.gameObject.name))
         {
-            checkpointNames[checkpointCount] = other.gameObject.name;
-            checkpointCount++;
-            Debug.Log("Checkpoint Count: " + checkpointCount);
-            checkpointText.text = "Gates: " + checkpointCount + "/" + maxCheckpoints;
+            checkpointNames[scoreCount] = other.gameObject.name;
+            scoreCount += 1000;
+            FindObjectOfType<SoundEffectPlayer>().Play("checkpointHit");//Possibly have this pitch upward every time you hit another checkpoint?
+            Debug.Log("Score: " + scoreCount);
+            checkpointText.text = "Score: " + scoreCount + "/" + maxScore;
+            switch (Player)
+            {
+                case 1:
+                    other.gameObject.GetComponent<hider>().hide(1);
+                    break;
+                case 2:
+                    other.gameObject.GetComponent<hider>().hide(2);
+                    break;
+                case 3:
+                    other.gameObject.GetComponent<hider>().hide(3);
+                    break;
+                default:
+                    other.gameObject.GetComponent<hider>().hide(4);
+                    break;
+            }
         }
-        if (other.gameObject.tag == "Finish" && checkpointCount >= maxCheckpoints)
+        if (other.gameObject.tag == "Finish" && scoreCount >= maxScore)
         {
             hasFinished = true;
             Debug.Log("You have reached the finish line!");
@@ -52,6 +75,8 @@ public class CheckpointCounter : MonoBehaviour
             checkpointText.enabled = false;
             score.enabled = false;
             speed.enabled = false;
+            playermesh.SetActive(false);
+            cam.cullingMask &= (1 << 5);
             switch (winners)
             {
                 case 1:
@@ -74,6 +99,10 @@ public class CheckpointCounter : MonoBehaviour
             }
 
         }
+    }
+    public void updateCheckpoint()
+    {
+        checkpointText.text = "Score: " + scoreCount + "/" + maxScore;
     }
 }
 
