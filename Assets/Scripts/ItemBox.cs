@@ -22,10 +22,10 @@ public class ItemBox : MonoBehaviour
     }
 
     // Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
+    void FixedUpdate()
+    {
+        this.transform.Rotate(0.0f, 1.0f, 0.0f, Space.Self);
+    }
 
     private void OnTriggerEnter(Collider collision)
     {
