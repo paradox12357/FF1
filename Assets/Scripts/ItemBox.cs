@@ -34,7 +34,8 @@ public class ItemBox : MonoBehaviour
             if (collision.gameObject.GetComponent<ShipDrive>().currentItem.Equals("None"))
             {
                 randomItem = UnityEngine.Random.Range(0, 100);
-                if(randomItem >= 0 && randomItem < 34)
+                FindObjectOfType<SoundEffectPlayer>().Play("itemGet");
+                if (randomItem >= 0 && randomItem < 34)
                 {
                     collision.gameObject.GetComponent<ShipDrive>().currentItem = itemList[0];
                     collision.gameObject.GetComponent<ShipDrive>().itemImage.sprite = hRocketSprite;

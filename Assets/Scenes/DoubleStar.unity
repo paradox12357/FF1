@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.014436126, g: 0.05814088, b: 0.105981246, a: 1}
+  m_IndirectSpecularColor: {r: 0.014436124, g: 0.058140885, b: 0.105981246, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5102,6 +5102,46 @@ MonoBehaviour:
   - name: checkpointHit
     clip: {fileID: 8300000, guid: a727d0456949f174fb1e59e7a4aeff8e, type: 3}
     volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: boostActivated
+    clip: {fileID: 8300000, guid: 5c39b9d7a644936448ee645fc06024e7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: deathSound
+    clip: {fileID: 8300000, guid: a8c9dcde288d1d84e9cd44b9257cbfb3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: deathSoundCar
+    clip: {fileID: 8300000, guid: 905eb21405f914a45a7d9e1a7e1062b0, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: homingIn
+    clip: {fileID: 8300000, guid: 5910c6f7016edce4f93b07ac06c27429, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: rocketExplode
+    clip: {fileID: 8300000, guid: 7adf14f264ee1434cb70842ba72ff057, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: rocketShoot
+    clip: {fileID: 8300000, guid: e35a496c7721551418f53ad5c13c7d7b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: rocketShootHoming
+    clip: {fileID: 8300000, guid: e35a496c7721551418f53ad5c13c7d7b, type: 3}
+    volume: 1
+    pitch: 1.22
+    source: {fileID: 0}
+  - name: itemGet
+    clip: {fileID: 8300000, guid: ca86df818219a4e44a89efd56857b8a7, type: 3}
+    volume: 0.8
     pitch: 1
     source: {fileID: 0}
 --- !u!4 &351271932

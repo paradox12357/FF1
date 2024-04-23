@@ -188,6 +188,8 @@ public class ShipDrive : MonoBehaviour
         Oscillate();
         if(HP <= 0)
         {
+            FindObjectOfType<SoundEffectPlayer>().Play("deathSound");
+            FindObjectOfType<SoundEffectPlayer>().Play("deathSoundCar");
             print("R I P");
             //Destroy(gameObject);
             transform.position = new Vector3(0, 0, 0);
@@ -495,6 +497,7 @@ public class ShipDrive : MonoBehaviour
             itemUsed = true;
             if (currentItem.Equals("rocket"))
             {
+                FindObjectOfType<SoundEffectPlayer>().Play("rocketShoot");
                 var itemShot = Instantiate(rocket, itemSpawnPoint.position, itemSpawnPoint.rotation);
                 rocketWallHit rwh = itemShot.GetComponent<rocketWallHit>();
                 rwh.setShotOwner(gameObject);
@@ -502,6 +505,7 @@ public class ShipDrive : MonoBehaviour
             }
             if (currentItem.Equals("rocketHoming"))
             {
+                FindObjectOfType<SoundEffectPlayer>().Play("rocketShootHoming");
                 var itemShot = Instantiate(rocketHoming, itemSpawnPoint.position, itemSpawnPoint.rotation);
                 rocketWallHit rwh = itemShot.GetComponent<rocketWallHit>();
                 rwh.setShotOwner(gameObject);
@@ -509,7 +513,8 @@ public class ShipDrive : MonoBehaviour
             }
             if (currentItem.Equals("boost"))
             {
-                rb.AddRelativeForce(new Vector3(0, 0, 4000));
+                FindObjectOfType<SoundEffectPlayer>().Play("boostActivated");
+                rb.AddRelativeForce(new Vector3(0, 0, 10000));
             }
             itemImage.sprite = null;
             currentItem = "None";

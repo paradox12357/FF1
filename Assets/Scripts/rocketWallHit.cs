@@ -27,6 +27,7 @@ public class rocketWallHit : MonoBehaviour
                 CheckpointCounter CPC = shotOwner.GetComponent<CheckpointCounter>();
                 CPC.scoreCount += 500;
                 CPC.updateCheckpoint();
+                FindObjectOfType<SoundEffectPlayer>().Play("rocketExplode");
                 Destroy(gameObject);
             }
             
@@ -34,6 +35,7 @@ public class rocketWallHit : MonoBehaviour
         if (other.gameObject.name.Contains("Wall"))
         {
             //print("LMAOOOO");
+            FindObjectOfType<SoundEffectPlayer>().Play("rocketExplode");
             Destroy(gameObject);
         }
         if (other.gameObject.tag == "enemy")
@@ -42,6 +44,7 @@ public class rocketWallHit : MonoBehaviour
             CheckpointCounter CPC = shotOwner.GetComponent<CheckpointCounter>();
             CPC.scoreCount += 200;
             CPC.updateCheckpoint();
+            FindObjectOfType<SoundEffectPlayer>().Play("rocketExplode");
             Destroy(other.gameObject);
         }
     }
