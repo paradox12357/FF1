@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 using JetBrains.Annotations;
+using TMPro;
 //ADDING A DRIFT MECHANIC WOULD MAKE TURNS MUCH MUCH EASIER TO PREPARE FOR AND INCREASE GAME DEPTH
 public class ShipDrive : MonoBehaviour
 {
@@ -67,6 +68,10 @@ public class ShipDrive : MonoBehaviour
     public GameObject marker2;
     public GameObject marker3;
     public GameObject marker4;
+    public TextMeshProUGUI speed;
+    public TextMeshProUGUI hp;
+    public Image item;
+    public TextMeshProUGUI score;
 
     //Item Stuff
     public GameObject rocket;
@@ -117,11 +122,19 @@ public class ShipDrive : MonoBehaviour
                 minimapCam.rect = new Rect(0.5f, 0, 0.5f, 0.5f);
                 sphere3.SetActive(true);
                 marker3.SetActive(true);
+                speed.rectTransform.anchoredPosition = new Vector3(411f, -618.2f, -2f);
+                score.rectTransform.anchoredPosition = new Vector3(255f, -505.09998f, -2f);
+                hp.rectTransform.anchoredPosition = new Vector3(0f, -506f, 0f);
+                item.rectTransform.anchoredPosition = new Vector3(752f, -472f, -2f);
                 break;
             default:
                 minimapCam.rect = new Rect(0.35f, 0.35f, 0.3f, 0.3f);
                 sphere4.SetActive(true);
                 marker4.SetActive(true);
+                speed.rectTransform.anchoredPosition = new Vector3(411f, -618.2f, -2f);
+                score.rectTransform.anchoredPosition = new Vector3(255f, -505.09998f, -2f);
+                hp.rectTransform.anchoredPosition = new Vector3(0f, -506f, 0f);
+                item.rectTransform.anchoredPosition = new Vector3(752f, -472f, -2f);
                 break;
         }
 

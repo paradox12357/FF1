@@ -33,6 +33,8 @@ public class CheckpointCounter : MonoBehaviour
     public Image image;
     public TextMeshProUGUI score;
     public TextMeshProUGUI speed;
+    public TextMeshProUGUI hp;
+    public Image item;
     public static int Players = 0;
     public int Player = 0;
     public GameObject playermesh;
@@ -75,6 +77,8 @@ public class CheckpointCounter : MonoBehaviour
             checkpointText.enabled = false;
             score.enabled = false;
             speed.enabled = false;
+            hp.enabled = false;
+            item.enabled = false;
             playermesh.SetActive(false);
             cam.cullingMask &= (1 << 5);
             switch (winners)

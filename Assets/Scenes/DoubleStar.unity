@@ -6049,6 +6049,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 520258568}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &427695277 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4657892927279952985, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8403816325009236868}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &431925329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8547,6 +8559,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2051827081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &613704125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3659827141714056064, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8403816325009236868}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &617149484
 GameObject:
   m_ObjectHideFlags: 0
@@ -22596,6 +22620,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1677780421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1440245505 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2761854389903077589, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8403816325009236868}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1449449090
 GameObject:
   m_ObjectHideFlags: 0
@@ -32455,9 +32491,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7585789182472443855, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
+      propertyPath: hp
+      value: 
+      objectReference: {fileID: 1440245505}
+    - target: {fileID: 7585789182472443855, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 250314427}
+    - target: {fileID: 7585789182472443855, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 427695277}
     - target: {fileID: 7585789182472443855, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
       propertyPath: score
@@ -32478,6 +32524,16 @@ PrefabInstance:
       propertyPath: playermesh
       value: 
       objectReference: {fileID: 4356298}
+    - target: {fileID: 7918373379658174388, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: hp
+      value: 
+      objectReference: {fileID: 1440245505}
     - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
       propertyPath: cam
@@ -32488,6 +32544,21 @@ PrefabInstance:
       propertyPath: cam2
       value: 
       objectReference: {fileID: 250314427}
+    - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 427695277}
+    - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 613704125}
+    - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      propertyPath: speed
+      value: 
+      objectReference: {fileID: 8403816325009236869}
     - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
       propertyPath: rocket
