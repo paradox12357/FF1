@@ -63,6 +63,10 @@ public class ShipDrive : MonoBehaviour
     public GameObject sphere2;
     public GameObject sphere3;
     public GameObject sphere4;
+    public GameObject marker1;
+    public GameObject marker2;
+    public GameObject marker3;
+    public GameObject marker4;
 
     //Item Stuff
     public GameObject rocket;
@@ -102,18 +106,22 @@ public class ShipDrive : MonoBehaviour
             case 1:
                 minimapCam.rect = new Rect(0.7f, 0, 0.3f, 0.3f);
                 sphere1.SetActive(true);
+                marker1.SetActive(true);
                 break;
             case 2:
                 minimapCam.rect = new Rect(0.4f, 0, 0.2f, 0.2f);
                 sphere2.SetActive(true);
+                marker2.SetActive(true);
                 break;
             case 3:
                 minimapCam.rect = new Rect(0.5f, 0, 0.5f, 0.5f);
                 sphere3.SetActive(true);
+                marker3.SetActive(true);
                 break;
             default:
                 minimapCam.rect = new Rect(0.35f, 0.35f, 0.3f, 0.3f);
                 sphere4.SetActive(true);
+                marker4.SetActive(true);
                 break;
         }
 
