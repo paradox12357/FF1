@@ -101,6 +101,7 @@ public class rocketWallHit : MonoBehaviour
             {
                 //print("LMAOOOO");
                 FindObjectOfType<SoundEffectPlayer>().Play("rocketExplode");
+                explosion.SetActive(true);
                 Invoke("die", 0.75f);
                 //gameObject.SetActive(false);
                 //Destroy(gameObject);
