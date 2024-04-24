@@ -163,9 +163,10 @@ public class rocketWallHit : MonoBehaviour
             if (other.gameObject.tag == "enemy")
             {
                
-                transform.position = Vector3.MoveTowards(transform.position, other.transform.position, 1f);
-                transform.up = other.transform.position - transform.position;
-            
+                transform.position = Vector3.MoveTowards(transform.position, other.transform.position, 10f);
+                transform.position += new Vector3(0, 1, 0);
+                //transform.up = other.transform.position - transform.position;
+
 
             }
         }
