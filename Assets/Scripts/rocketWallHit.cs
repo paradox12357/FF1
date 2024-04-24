@@ -60,7 +60,7 @@ public class rocketWallHit : MonoBehaviour
             {
                
                 transform.position = Vector3.MoveTowards(transform.position, other.transform.position, 1f);
-                transform.up = other.transform.position - transform.position;
+                //transform.up = other.transform.position - transform.position;
             
 
             }
@@ -164,7 +164,7 @@ public class rocketWallHit : MonoBehaviour
             {
                
                 transform.position = Vector3.MoveTowards(transform.position, other.transform.position, 1f);
-                transform.up = other.transform.position - transform.position;
+                //transform.up = other.transform.position - transform.position;
             
 
             }
