@@ -88,9 +88,6 @@ public class ShipDrive : MonoBehaviour
     //Death Stuff
     public GameObject explosion;
 
-    //player selected car
-    public MenuCarSelect CarSelectScript;
-
     void Start()
     {
         //spawnPoint = rb.transform;
@@ -108,12 +105,14 @@ public class ShipDrive : MonoBehaviour
         inputActions.Enable();
         itemUsed = false;
         // temp ship select
-        shipSelect = CarSelectScript.car;
-        Debug.Log("ShipSelect = " + shipSelect);
-        /*if (shipSelect > 2)
+        shipSelect = Player - 1;
+        if (shipSelect > 2)
         {
             shipSelect = 0;
-        }*/
+        }
+        if (Player == 1) {
+            shipSelect = MenuCarSelect.car;
+        }
         switch (Player)
         {
             case 1:
