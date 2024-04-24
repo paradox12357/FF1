@@ -87,6 +87,10 @@ public class ShipDrive : MonoBehaviour
     // Start is called before the first frame update
     //Death Stuff
     public GameObject explosion;
+
+    //player selected car
+    public MenuCarSelect CarSelectScript;
+
     void Start()
     {
         //spawnPoint = rb.transform;
@@ -104,11 +108,12 @@ public class ShipDrive : MonoBehaviour
         inputActions.Enable();
         itemUsed = false;
         // temp ship select
-        shipSelect = Player - 1;
-        if (shipSelect > 2)
+        shipSelect = CarSelectScript.car;
+        Debug.Log("ShipSelect = " + shipSelect);
+        /*if (shipSelect > 2)
         {
             shipSelect = 0;
-        }
+        }*/
         switch (Player)
         {
             case 1:
@@ -158,7 +163,7 @@ public class ShipDrive : MonoBehaviour
             lightTwo = GameObject.Find("geminiLightTwo");
             lightOne = GameObject.Find("geminiLightOne");*/
         }
-        if (shipSelect == 1)//Virgo
+        if (shipSelect == 2)//Virgo
         {
             shipObj = transform.Find("Virgo");
             if (shipObj == null)
@@ -169,7 +174,7 @@ public class ShipDrive : MonoBehaviour
             gravMult = 110;
             turnSpeed = 22.5f;
         }
-        if (shipSelect == 2)//Scorpio
+        if (shipSelect == 1)//Scorpio
         {
             shipObj = transform.Find("Scorpio");
             if (shipObj == null)

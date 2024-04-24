@@ -7892,6 +7892,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
+      propertyPath: CarSelectScript
+      value: 
+      objectReference: {fileID: 1145062738}
+    - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
       propertyPath: checkpointCounter
       value: 
       objectReference: {fileID: 1145062728}
@@ -7999,11 +8004,21 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1993724939}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 501858219864330339, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1145062738}
     - targetCorrespondingSourceObject: {fileID: 2007029762334135024, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1664745131}
   m_SourcePrefab: {fileID: 100100000, guid: ad96337b6a4282f4e8b250df1d6e6d6a, type: 3}
+--- !u!1 &400349089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 501858219864330339, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 400349088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &406929027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23319,7 +23334,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 400349088}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 400349089}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e7a9669cadee34db700127bdfaef96, type: 3}
@@ -23331,6 +23346,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 400349088}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1145062738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400349089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1cd18711d29b34ba17fef0e47f6c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: 0
+  Car1: {fileID: 0}
+  Car2: {fileID: 0}
+  Car3: {fileID: 0}
+  offScreen: {fileID: 0}
+  onScreen: {fileID: 0}
 --- !u!1 &1153459474
 GameObject:
   m_ObjectHideFlags: 0
@@ -36132,6 +36165,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8403816325009236868}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1874281749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874281725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1cd18711d29b34ba17fef0e47f6c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: 0
+  Car1: {fileID: 0}
+  Car2: {fileID: 0}
+  Car3: {fileID: 0}
+  offScreen: {fileID: 0}
+  onScreen: {fileID: 0}
 --- !u!1 &1883756333
 GameObject:
   m_ObjectHideFlags: 0
@@ -40595,6 +40646,11 @@ PrefabInstance:
       objectReference: {fileID: 718679426}
     - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
         type: 3}
+      propertyPath: CarSelectScript
+      value: 
+      objectReference: {fileID: 1874281749}
+    - target: {fileID: 8278927502962024930, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
       propertyPath: lightScorpioOne
       value: 
       objectReference: {fileID: 1451860679}
@@ -40732,6 +40788,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1874281737}
+    - targetCorrespondingSourceObject: {fileID: 501858219864330339, guid: ad96337b6a4282f4e8b250df1d6e6d6a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1874281749}
   m_SourcePrefab: {fileID: 100100000, guid: ad96337b6a4282f4e8b250df1d6e6d6a, type: 3}
 --- !u!114 &8403816325009236869 stripped
 MonoBehaviour:

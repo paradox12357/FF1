@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MenuCarSelect : MonoBehaviour
 {
-    int car = 0;
+    public int car = 0;
 
     public GameObject Car1;
     public GameObject Car2;
