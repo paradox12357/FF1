@@ -1,17 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMusic : MonoBehaviour
 {
-    // Update is called once per frame
-    void Update()
+    public static PauseMusic instance;
+    public AudioSource music;
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(SceneManager.GetActiveScene().name == "CarSelect")
+        // Check if the loaded scene is "CarSelect"
+        if (scene.name == "CarSelect" || scene.name == "DoubleStar")
         {
-            DoNotDestroy.instance.GetComponent<AudioSource>().Stop();
+            music.Pause();
+        }
+        else
+        {
+            if (!music.isPlaying)
+            {
+                music.Play();
+            }
         }
     }
+
+    public void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        music = GetComponent<AudioSource>();
+    }
+
+    void OnDestroy()
+    {
+        // Always good practice to remove listeners when no longer needed
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
 }

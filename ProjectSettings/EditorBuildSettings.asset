@@ -5,15 +5,30 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Opening.unity
+    guid: 529cacdce32b1f44e8a9d66c7eb674cb
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: b2aa2e68df299944cb79738b387d95df
+  - enabled: 1
+    path: Assets/Scenes/AmtPlayers.unity
+    guid: d5d018522c4155940aa1e0515aedbf2e
+  - enabled: 1
+    path: Assets/Scenes/CarSelect.unity
+    guid: 414f6c64db18b384b809ce6ed4efe8ca
   - enabled: 1
     path: Assets/Scenes/DoubleStar.unity
     guid: df6667ee7b84bb045a86f84800eaee84
   - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 0
     path: Assets/Scenes/DoubleStarBig.unity
     guid: 2f43c8cd0f15b49928fde92fae222232
+  - enabled: 1
+    path: Assets/Scenes/Option.unity
+    guid: bbf323cbadaa791459f1cb7d8710a1d8
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 932288aac825940758efeb2a08285fe8,
       type: 2}
