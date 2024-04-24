@@ -85,9 +85,12 @@ public class ShipDrive : MonoBehaviour
     //Transform spawnPoint;
     //int changingRot = 0;
     // Start is called before the first frame update
+    //Death Stuff
+    public GameObject explosion;
     void Start()
     {
         //spawnPoint = rb.transform;
+        explosion.SetActive(false);
         HP = 100;
         Cursor.visible = false;
         //geminiShip = GameObject.Find("/Speedship/Gemini");
@@ -212,9 +215,11 @@ public class ShipDrive : MonoBehaviour
             FindObjectOfType<SoundEffectPlayer>().Play("deathSound");
             FindObjectOfType<SoundEffectPlayer>().Play("deathSoundCar");
             print("R I P");
+            explosion.SetActive(true);
+            Invoke("carDie", 0.75f);
             //Destroy(gameObject);
-            transform.position = new Vector3(0, 0, 0);
-            HP = 100;
+            //transform.position = new Vector3(0, 0, 0);
+            //HP = 100;
         }
     }
 
@@ -606,4 +611,12 @@ public class ShipDrive : MonoBehaviour
     {
         grounded = false;
     }*/
+
+    public void carDie()
+    {
+        //Destroy(gameObject);
+        transform.position = new Vector3(0, 0, 0);
+        HP = 100;
+        explosion.SetActive(false);
+    }
 }

@@ -17,6 +17,7 @@ TagManager:
   - rocket
   - rocketHoming
   - enemy
+  - explosion
   layers:
   - Default
   - TransparentFX
@@ -28,8 +29,8 @@ TagManager:
   - Player2
   - Player3
   - Player4
-  - 
-  - 
+  - enemy
+  - item box
   - 
   - 
   - 
