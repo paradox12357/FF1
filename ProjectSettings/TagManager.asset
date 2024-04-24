@@ -17,6 +17,7 @@ TagManager:
   - rocket
   - rocketHoming
   - enemy
+  - explosion
   layers:
   - Default
   - TransparentFX
